@@ -1,12 +1,74 @@
-# ARBM - AI Reasoning & Benchmarking Framework
+# ARBM - Agentic AI Reasoning & Benchmarking Framework
 
-## A Comprehensive 15-Track Benchmark Suite for Evaluating LLM Agentic Capabilities
+## A Comprehensive 15-Track Benchmark Suite for Evaluating LLM Agentic Workflow Capabilities
 
 [![Framework](https://img.shields.io/badge/Framework-ARBM%20v1.0-blue)](https://github.com/arbm-benchmark/ARBM)
 [![Cloud](https://img.shields.io/badge/Cloud-OCI%20OKE-red)](https://www.oracle.com/cloud/compute/container-engine-kubernetes/)
 [![GPUs](https://img.shields.io/badge/GPUs-4x%20A10-yellowgreen)](https://www.nvidia.com/en-us/data-center/)
 [![Tracks](https://img.shields.io/badge/Tracks-15%20Complete-success)](docs/tracks.md)
 [![License](https://img.shields.io/badge/License-MIT-orange)](LICENSE)
+[![Model](https://img.shields.io/badge/Model-NVIDIA%20Nemotron-76B900)](https://huggingface.co/nvidia)
+[![Agentic](https://img.shields.io/badge/Agentic-Workflow%20Ready-purple)](docs/agentic.md)
+
+---
+
+## Supported Models
+
+| Model | Architecture | Status | Notes |
+|-------|--------------|--------|-------|
+| **Llama-3-8B-Instruct** | Transformer | **Primary** | Fully tested, production ready |
+| **NVIDIA Nemotron-3-Nano-30B** | Transformer | **Supported** | High performance, requires vLLM 0.6.6+ |
+| **Mixtral-8x7B-Instruct** | MoE Transformer | **Supported** | Alternative for mixed workloads |
+| **Custom Models** | Any vLLM-compatible | **Extensible** | Configure via `benchmark_config.yaml` |
+
+> **Note:** NVIDIA Nemotron models provide excellent performance for agentic workflows. For NemotronH (Mamba-hybrid) variants, use vLLM 0.7.0+ or transformers library directly.
+
+---
+
+## Agentic Workflow Capabilities
+
+ARBM is specifically designed to evaluate **Agentic AI Workflows** - autonomous systems that can:
+
+### What is an Agentic Workflow?
+
+An **agentic workflow** is an AI system that operates autonomously to accomplish complex, multi-step tasks. Unlike simple Q&A chatbots, agentic systems:
+
+| Capability | Description | ARBM Track |
+|------------|-------------|------------|
+| **Autonomous Planning** | Break down complex goals into actionable steps | Track 10 |
+| **Tool Orchestration** | Select and use multiple tools in sequence | Tracks 02, 06, 07 |
+| **Self-Correction** | Detect errors and recover autonomously | Track 08 |
+| **Context Persistence** | Maintain state across extended interactions | Tracks 05, 15 |
+| **Structured Output** | Generate machine-readable responses for downstream systems | Track 11 |
+| **Safety Guardrails** | Resist manipulation while remaining helpful | Track 14 |
+
+### Agentic Workflow Architecture Tested
+
+```
+                          AGENTIC WORKFLOW PIPELINE
+
+    User Goal ──► Planning ──► Tool Selection ──► Execution ──► Validation
+                     │              │                │              │
+                     ▼              ▼                ▼              ▼
+                 Track 10       Track 02         Track 06       Track 08
+                 Planning       Tool Use          ReAct        Self-Reflect
+                     │              │                │              │
+                     └──────────────┴────────────────┴──────────────┘
+                                         │
+                                         ▼
+                              Track 15: Agent Loop Persistence
+                              (Multi-turn Session Management)
+```
+
+### Key Agentic Metrics
+
+| Metric | Score | Implication |
+|--------|-------|-------------|
+| **Agent Loop Persistence** | 95.3% | Excellent for long-running workflows |
+| **Error Recovery** | 100% | Self-healing capability |
+| **Tool Selection Accuracy** | ~85% | Reliable tool orchestration |
+| **Context Retention** | 87.5% | Good state management |
+| **Instruction Persistence** | 100% | Maintains role/format throughout |
 
 ---
 
@@ -69,27 +131,20 @@ Overall Performance: 83-90% across all categories
 
 ## Why This Framework Matters
 
-As AI evolves from simple chatbots to autonomous agents, we need rigorous evaluation methodologies that go beyond traditional benchmarks:
+As AI evolves from simple chatbots to **autonomous agentic systems**, we need rigorous evaluation methodologies that go beyond traditional benchmarks:
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                    THE EVALUATION CHALLENGE                                  │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                              │
-│   Traditional Benchmarks          vs.         ARBM Framework                 │
-│   ─────────────────────                       ──────────────                 │
-│                                                                              │
-│   - Single Q&A accuracy                       - Multi-turn reasoning         │
-│   - Static test sets                          - Dynamic tool use             │
-│   - Isolated tasks                            - Agent loop persistence       │
-│   - No tool evaluation                        - Adversarial robustness       │
-│   - Single-turn only                          - Instruction following        │
-│   - No safety testing                         - JSON/structured output       │
-│                                                                              │
-│   Result: Incomplete picture      Result: Comprehensive agent evaluation     │
-│                                                                              │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
+### The Evaluation Challenge: Traditional vs. Agentic Benchmarks
+
+| Aspect | Traditional Benchmarks | ARBM Agentic Framework |
+|--------|----------------------|------------------------|
+| **Evaluation Type** | Single Q&A accuracy | Multi-turn reasoning |
+| **Test Nature** | Static test sets | Dynamic tool use |
+| **Task Scope** | Isolated tasks | Agent loop persistence |
+| **Tool Testing** | No tool evaluation | Full toolchain testing |
+| **Conversation** | Single-turn only | Extended multi-turn sessions |
+| **Safety** | No safety testing | Adversarial robustness |
+| **Output Format** | Freeform text | JSON/structured output |
+| **Result** | Incomplete picture | **Comprehensive agentic evaluation**|
 
 ### Key Questions ARBM Answers
 
@@ -202,40 +257,34 @@ As AI evolves from simple chatbots to autonomous agents, we need rigorous evalua
 
 ### Summary Scorecard
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                         ARBM BENCHMARK SCORECARD                             │
-│                       Llama-3-8B-Instruct on 4x A10                          │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                              │
-│  CATEGORY               TRACKS          SCORE      RATING                    │
-│  ─────────────────────────────────────────────────────────────               │
-│  Core Tracks            01-05           ~90%       ████████████████████      │
-│  Trending Tracks        06-10           ~82%       ████████████████░░░░      │
-│  Advanced Tracks        11-15           83.6%      ████████████████░░░░      │
-│                                                                              │
-│  OVERALL FRAMEWORK SCORE:               ~85%       PRODUCTION READY          │
-│                                                                              │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                              KEY STRENGTHS                                   │
-├─────────────────────────────────────────────────────────────────────────────┤
-│  [100%] Structured Output (JSON)   - Perfect schema compliance               │
-│  [100%] Harmful Content Refusal    - Proper safety alignment                 │
-│  [100%] Manipulation Resistance    - Robust to social engineering            │
-│  [100%] Error Recovery             - Excellent correction handling           │
-│  [100%] Instruction Persistence    - Maintains format/role over turns        │
-│  [ 95%] Agent Loops                - Strong multi-turn performance           │
-│                                                                              │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                           AREAS FOR IMPROVEMENT                              │
-├─────────────────────────────────────────────────────────────────────────────┤
-│  [ 50%] Prompt Injection           - Vulnerable to delimiter escapes         │
-│  [ 50%] Consistency                - Inconsistent on paraphrased requests    │
-│  [ 67%] Role Following             - Struggles with child-friendly mode      │
-│  [ 75%] Complex Math               - Issues with mixtures/combinatorics      │
-│                                                                              │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
+#### ARBM Benchmark Scorecard - Llama-3-8B-Instruct on 4x A10
+
+| Category | Tracks | Score | Rating |
+|----------|--------|-------|--------|
+| **Core Tracks** | 01-05 | ~90% | Excellent |
+| **Trending Tracks** | 06-10 | ~82% | Good |
+| **Advanced Tracks** | 11-15 | 83.6% | Good |
+| **OVERALL** | All 15 | **~85%** | **PRODUCTION READY** |
+
+#### Key Strengths (Agentic Capabilities)
+
+| Capability | Score | Description |
+|------------|-------|-------------|
+| Structured Output (JSON) | **100%** | Perfect schema compliance |
+| Harmful Content Refusal | **100%** | Proper safety alignment |
+| Manipulation Resistance | **100%** | Robust to social engineering |
+| Error Recovery | **100%** | Excellent self-correction |
+| Instruction Persistence | **100%** | Maintains format/role over turns |
+| Agent Loops | **95%** | Strong multi-turn performance |
+
+#### Areas for Improvement
+
+| Capability | Score | Issue |
+|------------|-------|-------|
+| Prompt Injection | 50% | Vulnerable to delimiter escapes |
+| Consistency | 50% | Inconsistent on paraphrased requests |
+| Role Following | 67% | Struggles with specific persona modes |
+| Complex Math | 75% | Issues with mixtures/combinatorics |
 
 ---
 
@@ -364,6 +413,7 @@ ARBM includes publication-quality visualizations designed for presentations, res
 
 | Feature | MMLU/HellaSwag | HumanEval | BigBench | **ARBM** |
 |---------|---------------|-----------|----------|----------|
+| **Agentic Workflow Testing** | No | No | No | **Full Pipeline** |
 | Multi-turn evaluation | No | No | Limited | **15 session types** |
 | Tool use testing | No | No | Limited | **Full toolchain** |
 | Adversarial robustness | No | No | Some | **4 attack vectors** |
@@ -371,44 +421,46 @@ ARBM includes publication-quality visualizations designed for presentations, res
 | Agent loop persistence | No | No | No | **4-turn sessions** |
 | Production metrics | No | No | No | **Latency/throughput** |
 | Safety alignment | No | No | Some | **100% refusal testing** |
+| Self-correction testing | No | No | No | **Error recovery** |
+| Planning evaluation | No | No | Limited | **Task decomposition** |
 
-### Novel Contributions
+### Novel Contributions for Agentic AI
 
-1. **First Unified Agent Benchmark**: Combines reasoning, tool use, safety, and persistence in one framework
-2. **Production-Focused Metrics**: Tests what actually matters for deployment
-3. **Reproducible Infrastructure**: Kubernetes-native, cloud-agnostic deployment
-4. **Publication-Ready Outputs**: 10 visualization types for papers and presentations
+1. **First Unified Agentic Workflow Benchmark**: Combines reasoning, tool use, safety, planning, and persistence in one framework
+2. **End-to-End Agent Pipeline Testing**: Validates the complete agentic workflow from goal to execution
+3. **Production-Focused Metrics**: Tests what actually matters for real-world agentic deployments
+4. **Self-Correction Evaluation**: Measures autonomous error detection and recovery
+5. **Reproducible Infrastructure**: Kubernetes-native, cloud-agnostic deployment
+6. **Multi-Model Support**: NVIDIA Nemotron, Llama, Mixtral, and custom models
+7. **Publication-Ready Outputs**: 10 visualization types for papers and presentations
 
 ---
 
 ## Infrastructure Architecture
 
+### OCI OKE Cluster Architecture for Agentic Workloads
+
 ```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                         OCI OKE CLUSTER ARCHITECTURE                         │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                              │
-│    ┌─────────────────────────────────────────────────────────────────┐      │
-│    │                    OCI Kubernetes Engine (OKE)                   │      │
-│    │                        Single GPU Node                           │      │
-│    └─────────────────────────────────────────────────────────────────┘      │
-│                                    │                                         │
-│           ┌────────────────────────┼────────────────────────┐               │
-│           │                        │                        │               │
-│    ┌──────┴──────┐          ┌──────┴──────┐          ┌──────┴──────┐       │
-│    │  vLLM Pod   │          │ Benchmark   │          │    FSS      │       │
-│    │             │          │    Jobs     │          │   Storage   │       │
-│    │ ┌─────────┐ │          │             │          │             │       │
-│    │ │ Llama-3 │ │◄────────►│ Track 01-15 │          │ /mnt/fss    │       │
-│    │ │   8B    │ │  OpenAI  │   Python    │◄────────►│ - Models    │       │
-│    │ └─────────┘ │   API    │   Scripts   │   NFS    │ - Results   │       │
-│    │             │          │             │          │ - Configs   │       │
-│    │  4x A10 GPU │          │  CPU Only   │          │             │       │
-│    │  (96GB)     │          │             │          │             │       │
-│    │  TP=4       │          │             │          │             │       │
-│    └─────────────┘          └─────────────┘          └─────────────┘       │
-│                                                                              │
-└─────────────────────────────────────────────────────────────────────────────┘
+                    OCI Kubernetes Engine (OKE)
+                        Single GPU Node
+                             │
+         ┌───────────────────┼───────────────────┐
+         │                   │                   │
+         ▼                   ▼                   ▼
+    ┌─────────┐        ┌─────────┐        ┌─────────┐
+    │  vLLM   │        │Benchmark│        │   FSS   │
+    │   Pod   │◄──────►│  Jobs   │◄──────►│ Storage │
+    └─────────┘ OpenAI └─────────┘  NFS   └─────────┘
+         │        API        │                  │
+    ┌────┴────┐         ┌────┴────┐        ┌────┴────┐
+    │ Model:  │         │Track    │        │/mnt/fss │
+    │ Llama-3 │         │ 01-15   │        │- Models │
+    │ 8B or   │         │ Python  │        │- Results│
+    │Nemotron │         │ Scripts │        │- Configs│
+    └─────────┘         └─────────┘        └─────────┘
+    4x A10 GPU
+    96GB VRAM
+    TP=4
 ```
 
 ### Hardware Specifications
@@ -430,9 +482,19 @@ ARBM includes publication-quality visualizations designed for presentations, res
 | **Kubernetes** | v1.28+ |
 | **Container Runtime** | CRI-O |
 | **GPU Operator** | NVIDIA GPU Operator |
-| **LLM Server** | vLLM (OpenAI-compatible API) |
-| **Model** | Llama-3-8B-Instruct |
+| **LLM Server** | vLLM 0.6.6 (OpenAI-compatible API) |
 | **Python** | 3.10 |
+
+### Supported Models for Agentic Workflows
+
+| Model | Parameters | Use Case | vLLM Version |
+|-------|------------|----------|--------------|
+| **Llama-3-8B-Instruct** | 8B | Primary testing, fast inference | 0.6.6+ |
+| **NVIDIA Nemotron-3-Nano-30B** | 30B | High-quality agentic responses | 0.6.6+ |
+| **Mixtral-8x7B-Instruct** | 46.7B (MoE) | Balanced performance | 0.6.6+ |
+| **Custom Models** | Any | User-defined | Compatible |
+
+> **Tip:** For production agentic workflows, NVIDIA Nemotron models offer excellent instruction-following and tool-use capabilities.
 
 ---
 
@@ -677,11 +739,11 @@ Weak on: Combinatorics, mixtures, probability calculations
 
 ```bibtex
 @misc{arbm-framework-2026,
-  title={ARBM: AI Reasoning & Benchmarking Framework for Agentic LLM Evaluation},
+  title={ARBM: Agentic AI Reasoning & Benchmarking Framework for LLM Workflow Evaluation},
   author={Deepak Soni},
   year={2026},
   howpublished={GitHub Repository},
-  note={15-track comprehensive benchmark for LLM agentic capabilities}
+  note={15-track comprehensive benchmark for LLM agentic workflow capabilities}
 }
 ```
 
@@ -702,6 +764,7 @@ MIT License - See [LICENSE](LICENSE) file.
 ## Acknowledgments
 
 - **Oracle Cloud Infrastructure** for GPU resources and OKE platform
+- **NVIDIA** for Nemotron models and A10 Tensor Core GPUs
 - **vLLM Team** for the high-performance inference server
 - **Meta AI** for Llama-3 model weights
 
