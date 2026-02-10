@@ -1,0 +1,167 @@
+{
+  "timestamp": "2026-02-09T12:58:26.959234",
+  "track": "10_planning",
+  "model": "llama-3-8b-instruct",
+  "benchmarks": {
+    "task_decomposition": {
+      "summary": {
+        "benchmark": "Task Decomposition",
+        "total_tasks": 5,
+        "successful": 5,
+        "avg_combined_score": 0.6857142857142857,
+        "avg_steps": 7.0,
+        "avg_subtask_coverage": 0.8714285714285713
+      },
+      "results": [
+        {
+          "task_id": "decomp_001",
+          "name": "Web App Development",
+          "category": "software",
+          "success": true,
+          "steps_generated": 31,
+          "subtask_coverage": 0.6666666666666666,
+          "step_quality": 0.5,
+          "combined_score": 0.5833333333333333,
+          "latency": 9.918995380401611,
+          "plan_preview": "Here's a detailed breakdown of the task into actionable steps:\n\n**Step 1: Plan the Authentication System**\n\n1. Define the scope of the project: Determine what features are required for the user authentication system, such as login, signup, password reset, and any additional functionality.\n2. Identif"
+        },
+        {
+          "task_id": "decomp_002",
+          "name": "Data Pipeline",
+          "category": "data",
+          "success": true,
+          "steps_generated": 1,
+          "subtask_coverage": 1.0,
+          "step_quality": 0.5,
+          "combined_score": 0.75,
+          "latency": 6.750493764877319,
+          "plan_preview": "Here is a detailed breakdown of the task into actionable steps:\n\n**Step 1: Define the Requirements**\n\n* Identify the APIs that will be used as data sources\n* Determine the type of data to be extracted from each API (e.g. JSON, XML, CSV)\n* Define the data warehouse schema and the tables that will be "
+        },
+        {
+          "task_id": "decomp_003",
+          "name": "ML Model Deployment",
+          "category": "mlops",
+          "success": true,
+          "steps_generated": 1,
+          "subtask_coverage": 0.8333333333333334,
+          "step_quality": 0.5,
+          "combined_score": 0.6666666666666667,
+          "latency": 9.01705026626587,
+          "plan_preview": "Here is a detailed breakdown of the task into actionable steps:\n\n**Deploy a Machine Learning Model to Production with Monitoring and Auto-Scaling**\n\n**Step 1: Prepare the Model**\n\n1.1. Ensure the machine learning model is trained and validated on a representative dataset.\n1.2. Convert the model to a"
+        },
+        {
+          "task_id": "decomp_004",
+          "name": "E-commerce Feature",
+          "category": "product",
+          "success": true,
+          "steps_generated": 1,
+          "subtask_coverage": 1.0,
+          "step_quality": 0.5,
+          "combined_score": 0.75,
+          "latency": 9.283545732498169,
+          "plan_preview": "Here's a detailed breakdown of the task into actionable steps to implement a shopping cart feature with add/remove items, quantity updates, and checkout flow:\n\n**Step 1: Plan the Shopping Cart Feature**\n\n1.1. Define the requirements for the shopping cart feature, including:\n\t* What types of products"
+        },
+        {
+          "task_id": "decomp_005",
+          "name": "Security Audit",
+          "category": "security",
+          "success": true,
+          "steps_generated": 1,
+          "subtask_coverage": 0.8571428571428571,
+          "step_quality": 0.5,
+          "combined_score": 0.6785714285714286,
+          "latency": 8.346697807312012,
+          "plan_preview": "Here is a detailed breakdown of the task into actionable steps:\n\n**Step 1: Planning and Preparation (1-2 days)**\n\n1.1. Define the scope of the security audit: Identify the specific web application(s) to be audited and the areas of concern (e.g., authentication, authorization, data encryption, etc.)."
+        }
+      ]
+    },
+    "dependency_resolution": {
+      "summary": {
+        "benchmark": "Dependency Resolution",
+        "total_tasks": 3,
+        "successful": 3,
+        "avg_score": 0.8666666666666667
+      },
+      "results": [
+        {
+          "task_id": "depend_001",
+          "name": "Build Order",
+          "category": "dependencies",
+          "success": true,
+          "order_correct": true,
+          "score": 1.0,
+          "latency": 1.9715001583099365,
+          "response_preview": "A classic dependency problem!\n\nLet's break it down step by step:\n\n1. Task A has no dependencies, so it can be executed first.\n2. Task B depends on Task A, so it can be executed after Task A.\n3. Task C"
+        },
+        {
+          "task_id": "depend_002",
+          "name": "Circular Detection",
+          "category": "dependencies",
+          "success": true,
+          "detection_correct": true,
+          "score": 1.0,
+          "latency": 2.5655763149261475,
+          "response_preview": "A classic circular dependency!\n\nAfter analyzing the dependencies, I can see that:\n\n* Task X depends on Z\n* Task Y depends on X\n* Task Z depends on Y\n\nThis creates a circular dependency, where each tas"
+        },
+        {
+          "task_id": "depend_003",
+          "name": "Parallel Execution",
+          "category": "optimization",
+          "success": true,
+          "keywords_found": 3,
+          "score": 0.6,
+          "latency": 4.208802938461304,
+          "response_preview": "Let's analyze the dependencies:\n\n* A and B can run in parallel, as they have no dependencies.\n* C depends on A, so it can't start until A is finished. A takes 2 minutes, so C will take 3 minutes (2 mi"
+        }
+      ]
+    },
+    "goal_planning": {
+      "summary": {
+        "benchmark": "Goal-Oriented Planning",
+        "total_tasks": 3,
+        "successful": 3,
+        "avg_combined_score": 0.7444444444444445,
+        "avg_phase_coverage": 0.7833333333333333,
+        "avg_element_coverage": 0.6166666666666667
+      },
+      "results": [
+        {
+          "task_id": "goal_001",
+          "name": "Startup Launch",
+          "category": "strategic",
+          "success": true,
+          "phase_coverage": 1.0,
+          "element_coverage": 1.0,
+          "constraint_coverage": 1.0,
+          "combined_score": 1.0,
+          "latency": 8.359837532043457,
+          "plan_preview": "Here is a comprehensive plan to achieve the goal of launching an MVP of a mobile app in 3 months with a team of 3:\n\n**Key Phases with Milestones:**\n\nPhase 1: Planning and Research (Weeks 1-2)\n\n* Milestone 1.1: Define project scope and goals (Week 1)\n* Milestone 1.2: Conduct market research and competitor analysis (Week 1)\n* Milestone 1.3: Create a project timeline and budget (Week 2)\n\nPhase 2: Des"
+        },
+        {
+          "task_id": "goal_002",
+          "name": "System Migration",
+          "category": "technical",
+          "success": true,
+          "phase_coverage": 0.6,
+          "element_coverage": 0.25,
+          "constraint_coverage": 1.0,
+          "combined_score": 0.6166666666666667,
+          "latency": 9.720639705657959,
+          "plan_preview": "Comprehensive Plan to Migrate a Legacy Monolith Application to Microservices Architecture with Zero Downtime\n\n**Phase 1: Planning and Preparation (Weeks 1-4)**\n\n1.1. Define the scope and objectives of the migration project\n1.2. Identify the key stakeholders and their roles\n1.3. Conduct a thorough analysis of the current monolith application, including its architecture, dependencies, and performanc"
+        },
+        {
+          "task_id": "goal_003",
+          "name": "Performance Optimization",
+          "category": "technical",
+          "success": true,
+          "phase_coverage": 0.75,
+          "element_coverage": 0.6,
+          "constraint_coverage": 0.5,
+          "combined_score": 0.6166666666666667,
+          "latency": 9.76073169708252,
+          "plan_preview": "Comprehensive Plan to Improve API Response Time\n\n**Goal:** Improve API response time from 2 seconds to under 200ms.\n\n**Constraints:**\n\n* Target response time: 200ms\n* API-centric approach\n\n**Key Phases with Milestones:**\n\nPhase 1: Assessment and Planning (Weeks 1-4)\n\n1.1. API Performance Analysis (Week 1)\n\t* Collect and analyze API performance metrics (response time, throughput, error rates)\n\t* Id"
+        }
+      ]
+    }
+  }
+}

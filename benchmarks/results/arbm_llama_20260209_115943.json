@@ -1,0 +1,53 @@
+{
+  "timestamp": "2026-02-09T11:59:43.297688",
+  "model": "llama-3-8b-instruct",
+  "provider": "vllm_local",
+  "summary": {
+    "total": 5,
+    "successful": 5,
+    "success_rate": 1.0,
+    "avg_latency": 2.239967918395996
+  },
+  "results": [
+    {
+      "task_id": "cot_math_001",
+      "success": true,
+      "correct": true,
+      "latency": 1.8564519882202148,
+      "tokens_in": 45,
+      "tokens_out": 132
+    },
+    {
+      "task_id": "cot_logic_001",
+      "success": true,
+      "correct": true,
+      "latency": 1.8438425064086914,
+      "tokens_in": 39,
+      "tokens_out": 152
+    },
+    {
+      "task_id": "cot_reasoning_001",
+      "success": true,
+      "correct": true,
+      "latency": 1.999199390411377,
+      "tokens_in": 33,
+      "tokens_out": 165
+    },
+    {
+      "task_id": "code_gen_001",
+      "success": true,
+      "correct": true,
+      "latency": 1.135106086730957,
+      "tokens_in": 27,
+      "tokens_out": 93
+    },
+    {
+      "task_id": "creative_001",
+      "success": true,
+      "correct": true,
+      "latency": 4.36523962020874,
+      "tokens_in": 47,
+      "tokens_out": 362
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "description": "ARBM Tool-use Efficiency Benchmark Tasks",
+  "author": "Deepak Soni",
+  "version": "1.0",
+  "tools": {
+    "web_search": {
+      "description": "Search the web for information",
+      "parameters": ["query", "num_results"]
+    },
+    "web_fetch": {
+      "description": "Fetch content from a URL",
+      "parameters": ["url"]
+    },
+    "code_execute": {
+      "description": "Execute Python code in a sandbox",
+      "parameters": ["code", "timeout"]
+    },
+    "code_analyze": {
+      "description": "Analyze code for issues",
+      "parameters": ["code", "analysis_type"]
+    },
+    "memory_store": {
+      "description": "Store information for later retrieval",
+      "parameters": ["key", "value"]
+    },
+    "memory_retrieve": {
+      "description": "Retrieve stored information",
+      "parameters": ["query", "top_k"]
+    }
+  },
+  "tasks": {
+    "web_research": [
+      {
+        "id": "web_001",
+        "instruction": "Find the current CEO of Apple Inc and their approximate net worth.",
+        "expected_tools": ["web_search"],
+        "evaluation_criteria": ["correct_answer", "source_citation", "tool_efficiency"]
+      },
+      {
+        "id": "web_002",
+        "instruction": "Research the latest stable version of Python and list 3 new features.",
+        "expected_tools": ["web_search", "web_fetch"],
+        "evaluation_criteria": ["version_accuracy", "feature_correctness", "source_quality"]
+      },
+      {
+        "id": "web_003",
+        "instruction": "Find and compare the stock prices of Apple, Microsoft, and Google from yesterday.",
+        "expected_tools": ["web_search"],
+        "evaluation_criteria": ["data_accuracy", "comparison_clarity", "recency"]
+      }
+    ],
+    "code_execution": [
+      {
+        "id": "code_001",
+        "instruction": "Write and execute Python code to calculate the first 20 Fibonacci numbers.",
+        "expected_tools": ["code_execute"],
+        "expected_output": "[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181]",
+        "evaluation_criteria": ["correctness", "code_quality", "execution_success"]
+      },
+      {
+        "id": "code_002",
+        "instruction": "Write code to fetch data from https://api.github.com/users/octocat and extract the user's name and public repo count.",
+        "expected_tools": ["code_execute"],
+        "evaluation_criteria": ["api_handling", "data_extraction", "error_handling"]
+      },
+      {
+        "id": "code_003",
+        "instruction": "Write a function to check if a string is a palindrome, test it with 'racecar' and 'hello'.",
+        "expected_tools": ["code_execute"],
+        "expected_output": "racecar: True, hello: False",
+        "evaluation_criteria": ["function_correctness", "test_coverage", "code_clarity"]
+      }
+    ],
+    "memory_operations": [
+      {
+        "id": "memory_001",
+        "instruction": "Remember that the project deadline is March 15, 2026, and the budget is $50,000. Then recall these details.",
+        "expected_tools": ["memory_store", "memory_retrieve"],
+        "evaluation_criteria": ["storage_accuracy", "retrieval_accuracy", "context_preservation"]
+      },
+      {
+        "id": "memory_002",
+        "instruction": "I previously told you about three team members: Alice (developer), Bob (designer), and Carol (manager). Who is the manager?",
+        "expected_tools": ["memory_retrieve"],
+        "evaluation_criteria": ["recall_accuracy", "context_understanding"]
+      }
+    ],
+    "combined_tools": [
+      {
+        "id": "combined_001",
+        "instruction": "Research the current weather in Tokyo, then write Python code to convert the temperature from Celsius to Fahrenheit.",
+        "expected_tools": ["web_search", "code_execute"],
+        "evaluation_criteria": ["research_accuracy", "code_correctness", "tool_sequencing"]
+      },
+      {
+        "id": "combined_002",
+        "instruction": "Find the latest Bitcoin price, store it in memory, then write code to calculate what $1000 would be worth in Bitcoin.",
+        "expected_tools": ["web_search", "memory_store", "code_execute"],
+        "evaluation_criteria": ["data_accuracy", "memory_usage", "calculation_correctness"]
+      },
+      {
+        "id": "combined_003",
+        "instruction": "Research top 3 programming languages by popularity, store this information, then generate a simple bar chart using Python matplotlib.",
+        "expected_tools": ["web_search", "memory_store", "code_execute"],
+        "evaluation_criteria": ["research_quality", "data_integration", "visualization_quality"]
+      }
+    ]
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "description": "ARBM Multi-Agent Coordination Benchmark Tasks",
+  "author": "Deepak Soni",
+  "version": "1.0",
+  "agent_roles": {
+    "orchestrator": {
+      "description": "High-level task planning and delegation",
+      "capabilities": ["task_decomposition", "agent_selection", "result_aggregation"]
+    },
+    "researcher": {
+      "description": "Information gathering and synthesis",
+      "capabilities": ["web_search", "document_analysis", "fact_checking"]
+    },
+    "analyst": {
+      "description": "Data analysis and reasoning",
+      "capabilities": ["data_processing", "statistical_analysis", "insight_generation"]
+    },
+    "writer": {
+      "description": "Content creation and summarization",
+      "capabilities": ["content_generation", "editing", "formatting"]
+    },
+    "reviewer": {
+      "description": "Quality assurance and validation",
+      "capabilities": ["fact_verification", "quality_check", "feedback_generation"]
+    },
+    "security_analyst": {
+      "description": "Security vulnerability analysis",
+      "capabilities": ["vulnerability_detection", "risk_assessment", "remediation_advice"]
+    },
+    "performance_analyst": {
+      "description": "Performance optimization analysis",
+      "capabilities": ["profiling", "bottleneck_detection", "optimization_suggestions"]
+    }
+  },
+  "tasks": {
+    "hierarchical": [
+      {
+        "id": "hier_001",
+        "name": "Research Report Generation",
+        "instruction": "Create a comprehensive report on the current state of AI in healthcare, including recent developments, challenges, and future outlook.",
+        "agents": ["orchestrator", "researcher", "analyst", "writer", "reviewer"],
+        "expected_workflow": [
+          "Orchestrator decomposes task into research, analysis, and writing subtasks",
+          "Researcher gathers information on AI healthcare developments",
+          "Analyst processes and identifies key trends and insights",
+          "Writer creates the report draft",
+          "Reviewer validates facts and improves quality"
+        ],
+        "evaluation_criteria": ["delegation_quality", "task_completion", "coordination_efficiency", "output_quality"]
+      },
+      {
+        "id": "hier_002",
+        "name": "Code Review Pipeline",
+        "instruction": "Review the following code for security vulnerabilities, performance issues, and code quality. Provide recommendations.",
+        "code_snippet": "def process_user_input(data):\n    query = f\"SELECT * FROM users WHERE id = {data}\"\n    result = db.execute(query)\n    return result",
+        "agents": ["orchestrator", "security_analyst", "performance_analyst", "reviewer"],
+        "expected_workflow": [
+          "Orchestrator assigns security review to security_analyst",
+          "Security analyst identifies SQL injection vulnerability",
+          "Performance analyst checks for optimization opportunities",
+          "Reviewer consolidates findings and recommendations"
+        ],
+        "evaluation_criteria": ["vulnerability_detection", "issue_coverage", "recommendation_quality"]
+      }
+    ],
+    "collaborative": [
+      {
+        "id": "collab_001",
+        "name": "Collaborative Problem Solving",
+        "instruction": "Three analysts must work together to determine the best strategy for a company entering a new market. Each analyst has different expertise: market research, financial analysis, and competitive analysis.",
+        "agents": ["analyst_market", "analyst_financial", "analyst_competitive"],
+        "expected_interactions": [
+          "Each analyst shares their domain expertise",
+          "Agents discuss and debate different perspectives",
+          "Agents reach consensus on the recommendation"
+        ],
+        "evaluation_criteria": ["contribution_balance", "consensus_quality", "synthesis_coherence"]
+      },
+      {
+        "id": "collab_002",
+        "name": "Multi-perspective Debate",
+        "instruction": "Debate the pros and cons of transitioning a company to fully remote work. One agent argues for, one against, and one synthesizes.",
+        "agents": ["advocate_pro", "advocate_con", "synthesizer"],
+        "expected_interactions": [
+          "Pro advocate presents benefits of remote work",
+          "Con advocate presents challenges and risks",
+          "Synthesizer combines perspectives into balanced recommendation"
+        ],
+        "evaluation_criteria": ["argument_quality", "counterargument_strength", "synthesis_balance"]
+      }
+    ],
+    "competitive": [
+      {
+        "id": "comp_001",
+        "name": "Solution Competition",
+        "instruction": "Three agents each propose a solution to reduce a company's carbon footprint. A judge evaluates and selects the best solution.",
+        "agents": ["proposer_1", "proposer_2", "proposer_3", "judge"],
+        "expected_interactions": [
+          "Each proposer develops an independent solution",
+          "Judge evaluates solutions on feasibility, impact, and cost",
+          "Judge selects winner with justification"
+        ],
+        "evaluation_criteria": ["proposal_diversity", "evaluation_fairness", "selection_quality"]
+      },
+      {
+        "id": "comp_002",
+        "name": "Creative Idea Generation",
+        "instruction": "Three creative agents each propose a unique marketing campaign for a new product. An evaluator ranks them.",
+        "agents": ["creative_1", "creative_2", "creative_3", "evaluator"],
+        "evaluation_criteria": ["idea_novelty", "feasibility", "ranking_consistency"]
+      }
+    ]
+  }
+}

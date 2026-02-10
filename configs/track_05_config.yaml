@@ -1,0 +1,275 @@
+# Track 05: Production Metrics Benchmarks Configuration
+# Purpose: Compare performance across Claude, GPT-4, and Gemini in production scenarios
+# Author: Deepak Soni
+# License: MIT
+
+track:
+  id: "track_05"
+  name: "Production Metrics Benchmarks"
+  description: "Evaluate latency, throughput, cost, and quality across major providers"
+
+# Provider Configurations
+providers:
+  anthropic:
+    enabled: true
+    models:
+      - id: "claude-3-5-sonnet-20241022"
+        name: "Claude 3.5 Sonnet"
+        pricing:
+          input_per_1k: 0.003
+          output_per_1k: 0.015
+      - id: "claude-3-opus-20240229"
+        name: "Claude 3 Opus"
+        pricing:
+          input_per_1k: 0.015
+          output_per_1k: 0.075
+    features:
+      - tool_use
+      - vision
+      - extended_thinking
+
+  openai:
+    enabled: true
+    models:
+      - id: "gpt-4-turbo"
+        name: "GPT-4 Turbo"
+        pricing:
+          input_per_1k: 0.01
+          output_per_1k: 0.03
+      - id: "gpt-4o"
+        name: "GPT-4o"
+        pricing:
+          input_per_1k: 0.005
+          output_per_1k: 0.015
+      - id: "o1-preview"
+        name: "o1-preview"
+        pricing:
+          input_per_1k: 0.015
+          output_per_1k: 0.06
+    features:
+      - function_calling
+      - vision
+      - json_mode
+
+  google:
+    enabled: true
+    models:
+      - id: "gemini-1.5-pro"
+        name: "Gemini 1.5 Pro"
+        pricing:
+          input_per_1k: 0.00125
+          output_per_1k: 0.005
+      - id: "gemini-1.5-flash"
+        name: "Gemini 1.5 Flash"
+        pricing:
+          input_per_1k: 0.000075
+          output_per_1k: 0.0003
+    features:
+      - function_calling
+      - vision
+      - long_context
+
+# Latency Benchmarks
+latency:
+  enabled: true
+  description: "End-to-end response latency measurements"
+
+  benchmarks:
+    # Time to First Token (TTFT)
+    ttft:
+      name: "Time to First Token"
+      samples: 50
+      prompt_lengths: [100, 500, 1000, 2000, 4000]
+      metrics:
+        - mean_ttft_ms
+        - p50_ttft_ms
+        - p95_ttft_ms
+        - p99_ttft_ms
+
+    # End-to-End Latency
+    e2e:
+      name: "End-to-End Response Latency"
+      samples: 50
+      output_lengths: [50, 100, 200, 500, 1000]
+      metrics:
+        - mean_latency_ms
+        - p50_latency_ms
+        - p95_latency_ms
+        - p99_latency_ms
+
+    # Tool Call Latency
+    tool_latency:
+      name: "Tool Call Round-trip Latency"
+      samples: 30
+      tool_types: [simple, complex, chained]
+      metrics:
+        - mean_tool_latency_ms
+        - tool_overhead_ms
+        - total_task_latency_ms
+
+# Throughput Benchmarks
+throughput:
+  enabled: true
+  description: "Token generation speed and request handling capacity"
+
+  benchmarks:
+    # Tokens Per Second
+    tokens_per_second:
+      name: "Token Generation Speed"
+      samples: 30
+      output_lengths: [100, 500, 1000]
+      concurrency_levels: [1, 5, 10, 20]
+      metrics:
+        - tokens_per_second
+        - tokens_per_second_per_request
+        - throughput_degradation_rate
+
+    # Requests Per Minute
+    rpm:
+      name: "Request Handling Capacity"
+      duration_seconds: 60
+      request_patterns: [constant, burst, ramping]
+      metrics:
+        - requests_per_minute
+        - success_rate
+        - error_rate
+        - rate_limit_hits
+
+# Cost Analysis Benchmarks
+cost:
+  enabled: true
+  description: "Cost efficiency across different task types"
+
+  benchmarks:
+    # Cost Per Task
+    cost_per_task:
+      name: "Cost Per Completed Task"
+      task_types:
+        - simple_qa
+        - complex_reasoning
+        - code_generation
+        - multi_turn_conversation
+        - tool_use_task
+      metrics:
+        - total_input_tokens
+        - total_output_tokens
+        - total_cost_usd
+        - cost_per_successful_completion
+
+    # Cost-Quality Tradeoff
+    cost_quality:
+      name: "Cost-Quality Tradeoff Analysis"
+      task_complexity: [low, medium, high]
+      metrics:
+        - quality_score
+        - cost_per_quality_point
+        - optimal_model_by_complexity
+
+# Quality Benchmarks
+quality:
+  enabled: true
+  description: "Output quality comparison across providers"
+
+  benchmarks:
+    # Reasoning Quality
+    reasoning:
+      name: "Reasoning Quality Comparison"
+      samples: 20
+      task_types:
+        - mathematical
+        - logical
+        - multi_hop
+      metrics:
+        - accuracy
+        - reasoning_coherence
+        - explanation_quality
+
+    # Code Quality
+    code:
+      name: "Code Generation Quality"
+      samples: 20
+      languages: [python, javascript, sql]
+      metrics:
+        - correctness
+        - code_quality_score
+        - documentation_quality
+
+    # Instruction Following
+    instruction_following:
+      name: "Instruction Following Accuracy"
+      samples: 25
+      constraint_types:
+        - format_constraints
+        - length_constraints
+        - style_constraints
+        - content_constraints
+      metrics:
+        - constraint_satisfaction_rate
+        - partial_satisfaction_rate
+
+# Reliability Benchmarks
+reliability:
+  enabled: true
+  description: "Service reliability and consistency"
+
+  benchmarks:
+    # Uptime and Availability
+    availability:
+      name: "Service Availability"
+      duration_hours: 24
+      check_interval_seconds: 60
+      metrics:
+        - uptime_percentage
+        - mean_time_between_failures
+        - mean_time_to_recover
+
+    # Response Consistency
+    consistency:
+      name: "Response Consistency"
+      samples: 30
+      temperature: 0.0
+      metrics:
+        - semantic_similarity_across_runs
+        - format_consistency
+        - quality_variance
+
+    # Error Handling
+    error_handling:
+      name: "Error Handling Quality"
+      error_scenarios:
+        - rate_limiting
+        - timeout
+        - malformed_request
+        - context_overflow
+      metrics:
+        - graceful_degradation_score
+        - error_message_quality
+        - retry_success_rate
+
+# Comparison Configuration
+comparison:
+  baseline_model: "claude-3-5-sonnet-20241022"
+
+  dimensions:
+    - name: "latency"
+      weight: 0.25
+    - name: "quality"
+      weight: 0.30
+    - name: "cost"
+      weight: 0.25
+    - name: "reliability"
+      weight: 0.20
+
+  visualization:
+    - radar_chart
+    - bar_comparison
+    - cost_quality_scatter
+    - latency_distribution
+
+# Output Configuration
+output:
+  directory: "tracks/track_05_production/results"
+  format: ["json", "csv"]
+  save_raw_responses: true
+  save_timing_data: true
+  generate_comparison_report: true

@@ -1,0 +1,34 @@
+# ARBM FSS Persistent Volume Claim
+# Purpose: Mount OCI File Storage Service for benchmark data
+# Author: Deepak Soni
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: arbm-fss-pvc
+  namespace: arbm-benchmark
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: oci-fss
+  resources:
+    requests:
+      storage: 500Gi
+---
+# If using static provisioning, create PV first
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: arbm-fss-pv
+spec:
+  capacity:
+    storage: 500Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: oci-fss
+  csi:
+    driver: fss.csi.oraclecloud.com
+    volumeHandle: "<FSS_OCID>:<MOUNT_TARGET_IP>:<EXPORT_PATH>"
+    # Example: ocid1.filesystem.oc1.phx.xxx:10.0.0.x:/arbm-data
+  mountOptions:
+    - nosuid

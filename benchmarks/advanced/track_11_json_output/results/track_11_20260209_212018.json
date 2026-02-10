@@ -1,0 +1,136 @@
+{
+  "timestamp": "2026-02-09T21:20:18.749013",
+  "track": "11_json_output",
+  "model": "llama-3-8b-instruct",
+  "benchmarks": {
+    "json_generation": {
+      "summary": {
+        "benchmark": "JSON Generation",
+        "total": 5,
+        "valid_json_rate": 1.0,
+        "valid_structure_rate": 1.0
+      },
+      "results": [
+        {
+          "task_id": "json_001",
+          "name": "Simple Object",
+          "success": true,
+          "json_valid": true,
+          "structure_valid": true,
+          "errors": [],
+          "latency": 0.3686046600341797
+        },
+        {
+          "task_id": "json_002",
+          "name": "Nested Object",
+          "success": true,
+          "json_valid": true,
+          "structure_valid": true,
+          "errors": [],
+          "latency": 0.6191766262054443
+        },
+        {
+          "task_id": "json_003",
+          "name": "Array of Objects",
+          "success": true,
+          "json_valid": true,
+          "structure_valid": true,
+          "errors": [],
+          "latency": 1.5895590782165527
+        },
+        {
+          "task_id": "json_004",
+          "name": "API Response Format",
+          "success": true,
+          "json_valid": true,
+          "structure_valid": true,
+          "errors": [
+            "data missing: ['total']"
+          ],
+          "latency": 0.991588830947876
+        },
+        {
+          "task_id": "json_005",
+          "name": "Config File",
+          "success": true,
+          "json_valid": true,
+          "structure_valid": true,
+          "errors": [],
+          "latency": 1.0470774173736572
+        }
+      ]
+    },
+    "schema_following": {
+      "summary": {
+        "benchmark": "Schema Following",
+        "total": 3,
+        "schema_compliance_rate": 1.0
+      },
+      "results": [
+        {
+          "task_id": "schema_001",
+          "name": "User Schema",
+          "success": true,
+          "json_valid": true,
+          "schema_valid": true,
+          "latency": 0.36583518981933594
+        },
+        {
+          "task_id": "schema_002",
+          "name": "Event Schema",
+          "success": true,
+          "json_valid": true,
+          "schema_valid": true,
+          "latency": 0.4551084041595459
+        },
+        {
+          "task_id": "schema_003",
+          "name": "Order Schema",
+          "success": true,
+          "json_valid": true,
+          "schema_valid": true,
+          "latency": 0.9527308940887451
+        }
+      ]
+    },
+    "data_extraction": {
+      "summary": {
+        "benchmark": "Data Extraction",
+        "total": 3,
+        "avg_extraction_rate": 1.0
+      },
+      "results": [
+        {
+          "task_id": "extract_001",
+          "name": "Text to JSON",
+          "success": true,
+          "json_valid": true,
+          "keys_found": 6,
+          "keys_expected": 6,
+          "extraction_rate": 1.0,
+          "latency": 0.787196159362793
+        },
+        {
+          "task_id": "extract_002",
+          "name": "Receipt to JSON",
+          "success": true,
+          "json_valid": true,
+          "keys_found": 6,
+          "keys_expected": 6,
+          "extraction_rate": 1.0,
+          "latency": 1.3623311519622803
+        },
+        {
+          "task_id": "extract_003",
+          "name": "Contact to JSON",
+          "success": true,
+          "json_valid": true,
+          "keys_found": 6,
+          "keys_expected": 6,
+          "extraction_rate": 1.0,
+          "latency": 0.9788987636566162
+        }
+      ]
+    }
+  }
+}

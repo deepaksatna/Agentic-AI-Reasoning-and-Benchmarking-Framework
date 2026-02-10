@@ -1,0 +1,195 @@
+{
+  "timestamp": "2026-02-09T12:57:06.872122",
+  "track": "09_long_context",
+  "model": "llama-3-8b-instruct",
+  "benchmarks": {
+    "needle_in_haystack": {
+      "summary": {
+        "benchmark": "Needle-in-Haystack",
+        "total_tasks": 5,
+        "successful": 5,
+        "found_rate": 1.0,
+        "position_breakdown": {
+          "beginning": 1.0,
+          "middle": 1.0,
+          "end": 1.0
+        },
+        "avg_latency": 0.26602745056152344
+      },
+      "results": [
+        {
+          "task_id": "needle_001",
+          "name": "Beginning Needle",
+          "success": true,
+          "needle_found": true,
+          "position": 0.1,
+          "context_length": 433,
+          "latency": 0.27208614349365234,
+          "answer_preview": "The secret password mentioned in the text is: ALPHA-BETA-GAMMA."
+        },
+        {
+          "task_id": "needle_002",
+          "name": "Middle Needle",
+          "success": true,
+          "needle_found": true,
+          "position": 0.5,
+          "context_length": 438,
+          "latency": 0.326066255569458,
+          "answer_preview": "According to the text, the CEO's birthday is on July 15th, 1985."
+        },
+        {
+          "task_id": "needle_003",
+          "name": "End Needle",
+          "success": true,
+          "needle_found": true,
+          "position": 0.9,
+          "context_length": 425,
+          "latency": 0.23842382431030273,
+          "answer_preview": "The project deadline is December 31st, 2026."
+        },
+        {
+          "task_id": "needle_004",
+          "name": "Hidden Number",
+          "success": true,
+          "needle_found": true,
+          "position": 0.3,
+          "context_length": 425,
+          "latency": 0.2910425662994385,
+          "answer_preview": "According to the text, the code to use when contacting support is \"7429\"."
+        },
+        {
+          "task_id": "needle_005",
+          "name": "Name Retrieval",
+          "success": true,
+          "needle_found": true,
+          "position": 0.7,
+          "context_length": 437,
+          "latency": 0.20251846313476562,
+          "answer_preview": "The lead researcher mentioned is Dr. Sarah Mitchell."
+        }
+      ]
+    },
+    "multihop_context": {
+      "summary": {
+        "benchmark": "Multi-hop Context",
+        "total_tasks": 3,
+        "successful": 3,
+        "avg_element_coverage": 0.8333333333333334,
+        "avg_latency": 1.1368316014607747
+      },
+      "results": [
+        {
+          "task_id": "multihop_001",
+          "name": "Person-Location-Event",
+          "success": true,
+          "elements_found": 4,
+          "total_elements": 4,
+          "element_coverage": 1.0,
+          "latency": 0.592646598815918,
+          "answer_preview": "Based on the context, John will need to go to the main conference room, which is located on the third floor of Building A, which is located on Oak Str"
+        },
+        {
+          "task_id": "multihop_002",
+          "name": "Chain of Ownership",
+          "success": true,
+          "elements_found": 1,
+          "total_elements": 1,
+          "element_coverage": 1.0,
+          "latency": 0.30849647521972656,
+          "answer_preview": "According to the context, Carol used Bob's car to drive to Denver, which was originally borrowed from Alice."
+        },
+        {
+          "task_id": "multihop_003",
+          "name": "Numerical Chain",
+          "success": true,
+          "elements_found": 1,
+          "total_elements": 2,
+          "element_coverage": 0.5,
+          "latency": 2.5093517303466797,
+          "answer_preview": "To find the final price for a premium member including tax, we need to follow the steps:\n\n1. Calculate the discount for a premium member:\nBase price ="
+        }
+      ]
+    },
+    "conversation_memory": {
+      "summary": {
+        "benchmark": "Conversation Memory",
+        "total_conversations": 2,
+        "avg_recall_rate": 1.0,
+        "avg_latency": 0.6525870561599731
+      },
+      "results": [
+        {
+          "task_id": "memory_001",
+          "name": "Personal Details",
+          "success": true,
+          "question_results": [
+            {
+              "question": "What's my name and profession?",
+              "recalled": true,
+              "expected": [
+                "Alex",
+                "software engineer"
+              ],
+              "answer_preview": "Your name is Alex, and you're a software engineer."
+            },
+            {
+              "question": "What framework am I using?",
+              "recalled": true,
+              "expected": [
+                "PyTorch"
+              ],
+              "answer_preview": "You're using PyTorch for the deep learning components in your natural language processing project."
+            },
+            {
+              "question": "What is my project about?",
+              "recalled": true,
+              "expected": [
+                "natural language processing",
+                "NLP"
+              ],
+              "answer_preview": "You've been working on a Python project for 3 months, and it's about natural language processing, sp"
+            }
+          ],
+          "recall_rate": 1.0,
+          "conversation_turns": 4,
+          "total_latency": 0.9056491851806641
+        },
+        {
+          "task_id": "memory_002",
+          "name": "Task Context",
+          "success": true,
+          "question_results": [
+            {
+              "question": "What cloud provider am I using?",
+              "recalled": true,
+              "expected": [
+                "AWS"
+              ],
+              "answer_preview": "You're using Amazon Web Services (AWS)."
+            },
+            {
+              "question": "What database am I using?",
+              "recalled": true,
+              "expected": [
+                "PostgreSQL",
+                "RDS"
+              ],
+              "answer_preview": "You're using PostgreSQL on RDS."
+            },
+            {
+              "question": "What containerization technology did I mention?",
+              "recalled": true,
+              "expected": [
+                "Docker"
+              ],
+              "answer_preview": "You mentioned Docker."
+            }
+          ],
+          "recall_rate": 1.0,
+          "conversation_turns": 4,
+          "total_latency": 0.3995249271392822
+        }
+      ]
+    }
+  }
+}

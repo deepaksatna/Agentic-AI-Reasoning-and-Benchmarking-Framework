@@ -1,0 +1,117 @@
+{
+  "description": "ARBM Reasoning Quality Benchmark Tasks",
+  "author": "Deepak Soni",
+  "version": "1.0",
+  "tasks": {
+    "chain_of_thought": [
+      {
+        "id": "cot_math_001",
+        "category": "mathematical",
+        "difficulty": "medium",
+        "question": "A bakery sells cupcakes for $3 each. They made 48 cupcakes and sold 75% of them. How much revenue did they generate?",
+        "answer": "108",
+        "expected_steps": ["Calculate 75% of 48", "Multiply by price", "Get total revenue"]
+      },
+      {
+        "id": "cot_math_002",
+        "category": "mathematical",
+        "difficulty": "medium",
+        "question": "Train A travels at 60 mph and Train B at 80 mph. Starting 280 miles apart, traveling toward each other, how long until they meet?",
+        "answer": "2 hours",
+        "expected_steps": ["Calculate combined speed", "Divide distance by combined speed"]
+      },
+      {
+        "id": "cot_math_003",
+        "category": "mathematical",
+        "difficulty": "hard",
+        "question": "A store offers 20% off, then an additional 15% off the discounted price. What is the total percentage discount?",
+        "answer": "32%",
+        "expected_steps": ["Calculate first discount", "Apply second discount to result", "Calculate total reduction"]
+      },
+      {
+        "id": "cot_logic_001",
+        "category": "logical",
+        "difficulty": "medium",
+        "question": "All programmers use computers. Some computer users are gamers. Can we conclude that some programmers are gamers?",
+        "answer": "No - we cannot make this conclusion",
+        "expected_steps": ["Identify the premises", "Analyze the logical relationship", "Check if conclusion follows"]
+      },
+      {
+        "id": "cot_logic_002",
+        "category": "logical",
+        "difficulty": "hard",
+        "question": "If it rains, the ground is wet. The ground is wet. Did it rain?",
+        "answer": "Not necessarily - this is affirming the consequent fallacy",
+        "expected_steps": ["Identify the conditional statement", "Recognize the fallacy pattern", "Explain why conclusion doesn't follow"]
+      },
+      {
+        "id": "cot_multihop_001",
+        "category": "multi_hop",
+        "difficulty": "medium",
+        "question": "Alice is taller than Bob. Bob is taller than Charlie. David is shorter than Charlie. Who is the tallest and who is the shortest?",
+        "answer": "Tallest: Alice, Shortest: David",
+        "expected_steps": ["Order Alice > Bob", "Add Bob > Charlie", "Add David < Charlie", "Combine orderings"]
+      },
+      {
+        "id": "cot_multihop_002",
+        "category": "multi_hop",
+        "difficulty": "hard",
+        "question": "John's father is Mike. Mike's brother is Steve. Steve's daughter is Sarah. What is Sarah's relationship to John?",
+        "answer": "Sarah is John's cousin",
+        "expected_steps": ["John's father is Mike", "Mike's brother Steve is John's uncle", "Steve's daughter is John's cousin"]
+      }
+    ],
+    "tree_of_thoughts": [
+      {
+        "id": "tot_creative_001",
+        "category": "creative",
+        "difficulty": "hard",
+        "question": "You have 3 boxes labeled 'Apples', 'Oranges', and 'Mixed'. All labels are wrong. You can only pick one fruit from one box. How do you correctly label all boxes?",
+        "answer": "Pick from 'Mixed' box. Since labels are wrong, it contains only apples or only oranges. Based on what you pick, you can deduce all labels.",
+        "exploration_branches": ["Pick from Apples box", "Pick from Oranges box", "Pick from Mixed box"]
+      },
+      {
+        "id": "tot_creative_002",
+        "category": "creative",
+        "difficulty": "hard",
+        "question": "How can you measure exactly 4 liters using only a 3-liter and a 5-liter container?",
+        "answer": "Fill 5L, pour into 3L (leaving 2L), empty 3L, pour 2L into 3L, fill 5L, pour into 3L until full (pour 1L), leaving 4L in 5L container.",
+        "exploration_branches": ["Start with 5L container", "Start with 3L container", "Alternate filling strategies"]
+      },
+      {
+        "id": "tot_game_001",
+        "category": "game",
+        "difficulty": "hard",
+        "question": "Using the numbers 8, 3, 8, 3 and +, -, *, /, make 24. Each number must be used exactly once.",
+        "answer": "8 / (3 - 8/3) = 24",
+        "exploration_branches": ["Try addition first", "Try multiplication first", "Try division patterns"]
+      },
+      {
+        "id": "tot_planning_001",
+        "category": "planning",
+        "difficulty": "medium",
+        "question": "You need to move 3 blocks (A on B, B on C, C on table) to have C on B, B on A, A on table. What's the minimum number of moves?",
+        "answer": "3 moves: Move A to table, Move B to table, Move C onto B",
+        "exploration_branches": ["Move A first", "Move B first", "Try to move C first"]
+      }
+    ],
+    "graph_of_thoughts": [
+      {
+        "id": "got_synthesis_001",
+        "category": "synthesis",
+        "difficulty": "hard",
+        "question": "Analyze the pros and cons of remote work considering productivity, work-life balance, collaboration, and company culture. Synthesize a recommendation.",
+        "expected_nodes": ["productivity_analysis", "work_life_analysis", "collaboration_analysis", "culture_analysis", "synthesis"],
+        "expected_connections": ["productivity connects to work_life", "collaboration connects to culture", "all connect to synthesis"]
+      },
+      {
+        "id": "got_analysis_001",
+        "category": "analysis",
+        "difficulty": "hard",
+        "question": "A company's revenue increased 20% but profit decreased 10%. Customer satisfaction improved but employee turnover increased. Analyze the interconnections and provide insights.",
+        "expected_nodes": ["revenue_growth", "profit_decline", "customer_satisfaction", "employee_turnover", "root_cause", "recommendations"],
+        "expected_connections": ["revenue and profit may conflict due to costs", "employee issues may affect long-term customer satisfaction"]
+      }
+    ]
+  }
+}

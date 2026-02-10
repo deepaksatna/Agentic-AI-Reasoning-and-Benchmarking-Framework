@@ -1,0 +1,362 @@
+{
+  "timestamp": "2026-02-09T12:24:48.934350",
+  "track": "05_production",
+  "model": "llama-3-8b-instruct",
+  "benchmarks": {
+    "latency": {
+      "short": {
+        "summary": {
+          "category": "short",
+          "total_prompts": 5,
+          "successful_prompts": 5,
+          "avg_latency": 0.44313132762908936,
+          "p50_latency": 0.17328250408172607,
+          "p95_latency": 1.2340266704559326,
+          "avg_tokens_per_second": 73.00127896385675,
+          "total_tokens_generated": 175
+        },
+        "results": [
+          {
+            "prompt_id": "short_001",
+            "iterations": 2,
+            "avg_latency": 0.17328250408172607,
+            "min_latency": 0.17032337188720703,
+            "max_latency": 0.17624163627624512,
+            "std_latency": 0.00418484488234369,
+            "avg_tokens_per_second": 75.04388427575202,
+            "avg_completion_tokens": 13
+          },
+          {
+            "prompt_id": "short_002",
+            "iterations": 2,
+            "avg_latency": 0.11457610130310059,
+            "min_latency": 0.11436295509338379,
+            "max_latency": 0.11478924751281738,
+            "std_latency": 0.0003014342605499141,
+            "avg_tokens_per_second": 69.82283037137151,
+            "avg_completion_tokens": 8
+          },
+          {
+            "prompt_id": "short_003",
+            "iterations": 2,
+            "avg_latency": 0.6262797117233276,
+            "min_latency": 0.6247608661651611,
+            "max_latency": 0.6277985572814941,
+            "std_latency": 0.0021479719875092036,
+            "avg_tokens_per_second": 79.83700117124809,
+            "avg_completion_tokens": 50
+          },
+          {
+            "prompt_id": "short_004",
+            "iterations": 2,
+            "avg_latency": 0.06749165058135986,
+            "min_latency": 0.06728553771972656,
+            "max_latency": 0.06769776344299316,
+            "std_latency": 0.0002914876043013431,
+            "avg_tokens_per_second": 59.26714298958488,
+            "avg_completion_tokens": 4
+          },
+          {
+            "prompt_id": "short_005",
+            "iterations": 2,
+            "avg_latency": 1.2340266704559326,
+            "min_latency": 1.2335870265960693,
+            "max_latency": 1.234466314315796,
+            "std_latency": 0.0006217503092327088,
+            "avg_tokens_per_second": 81.03553601132722,
+            "avg_completion_tokens": 100
+          }
+        ]
+      },
+      "medium": {
+        "summary": {
+          "category": "medium",
+          "total_prompts": 5,
+          "successful_prompts": 5,
+          "avg_latency": 3.369308876991272,
+          "p50_latency": 3.6688836812973022,
+          "p95_latency": 3.6701642274856567,
+          "avg_tokens_per_second": 81.7158179744914,
+          "total_tokens_generated": 1377
+        },
+        "results": [
+          {
+            "prompt_id": "medium_001",
+            "iterations": 2,
+            "avg_latency": 3.665878415107727,
+            "min_latency": 3.663792133331299,
+            "max_latency": 3.6679646968841553,
+            "std_latency": 0.0029504479831566257,
+            "avg_tokens_per_second": 81.83580118995502,
+            "avg_completion_tokens": 300
+          },
+          {
+            "prompt_id": "medium_002",
+            "iterations": 2,
+            "avg_latency": 2.1724276542663574,
+            "min_latency": 2.1014602184295654,
+            "max_latency": 2.2433950901031494,
+            "std_latency": 0.10036311024723366,
+            "avg_tokens_per_second": 81.47239079269997,
+            "avg_completion_tokens": 177
+          },
+          {
+            "prompt_id": "medium_003",
+            "iterations": 2,
+            "avg_latency": 3.6691904067993164,
+            "min_latency": 3.66729736328125,
+            "max_latency": 3.671083450317383,
+            "std_latency": 0.002677167817411989,
+            "avg_tokens_per_second": 81.76192745382365,
+            "avg_completion_tokens": 300
+          },
+          {
+            "prompt_id": "medium_004",
+            "iterations": 2,
+            "avg_latency": 3.6701642274856567,
+            "min_latency": 3.668649196624756,
+            "max_latency": 3.6716792583465576,
+            "std_latency": 0.002142577190899809,
+            "avg_tokens_per_second": 81.74022537563965,
+            "avg_completion_tokens": 300
+          },
+          {
+            "prompt_id": "medium_005",
+            "iterations": 2,
+            "avg_latency": 3.6688836812973022,
+            "min_latency": 3.6680800914764404,
+            "max_latency": 3.669687271118164,
+            "std_latency": 0.0011364476232477467,
+            "avg_tokens_per_second": 81.76874506033874,
+            "avg_completion_tokens": 300
+          }
+        ]
+      },
+      "long": {
+        "summary": {
+          "category": "long",
+          "total_prompts": 3,
+          "successful_prompts": 3,
+          "avg_latency": 9.250576774279276,
+          "p50_latency": 9.247194051742554,
+          "p95_latency": 9.3204984664917,
+          "avg_tokens_per_second": 81.94051324148303,
+          "total_tokens_generated": 2274.0
+        },
+        "results": [
+          {
+            "prompt_id": "long_001",
+            "iterations": 2,
+            "avg_latency": 9.247194051742554,
+            "min_latency": 8.869595766067505,
+            "max_latency": 9.624792337417603,
+            "std_latency": 0.5340046167304844,
+            "avg_tokens_per_second": 81.97059929863593,
+            "avg_completion_tokens": 758
+          },
+          {
+            "prompt_id": "long_002",
+            "iterations": 2,
+            "avg_latency": 9.184037804603577,
+            "min_latency": 8.702824831008911,
+            "max_latency": 9.665250778198242,
+            "std_latency": 0.6805379136474621,
+            "avg_tokens_per_second": 81.93522924479495,
+            "avg_completion_tokens": 752.5
+          },
+          {
+            "prompt_id": "long_003",
+            "iterations": 2,
+            "avg_latency": 9.3204984664917,
+            "min_latency": 8.97413682937622,
+            "max_latency": 9.666860103607178,
+            "std_latency": 0.4898293246944581,
+            "avg_tokens_per_second": 81.91571118101822,
+            "avg_completion_tokens": 763.5
+          }
+        ]
+      },
+      "complex": {
+        "summary": {
+          "category": "complex",
+          "total_prompts": 3,
+          "successful_prompts": 3,
+          "avg_latency": 5.618339101473491,
+          "p50_latency": 7.3268643617630005,
+          "p95_latency": 7.328355193138123,
+          "avg_tokens_per_second": 81.7117807516006,
+          "total_tokens_generated": 1379
+        },
+        "results": [
+          {
+            "prompt_id": "complex_001",
+            "iterations": 2,
+            "avg_latency": 2.199797749519348,
+            "min_latency": 2.1983509063720703,
+            "max_latency": 2.201244592666626,
+            "std_latency": 0.0020461452015068833,
+            "avg_tokens_per_second": 81.37115217656662,
+            "avg_completion_tokens": 179
+          },
+          {
+            "prompt_id": "complex_002",
+            "iterations": 2,
+            "avg_latency": 7.328355193138123,
+            "min_latency": 7.326004266738892,
+            "max_latency": 7.3307061195373535,
+            "std_latency": 0.003324711997933365,
+            "avg_tokens_per_second": 81.8737692066121,
+            "avg_completion_tokens": 600
+          },
+          {
+            "prompt_id": "complex_003",
+            "iterations": 2,
+            "avg_latency": 7.3268643617630005,
+            "min_latency": 7.326116323471069,
+            "max_latency": 7.327612400054932,
+            "std_latency": 0.0010578858976234401,
+            "avg_tokens_per_second": 81.89042087162309,
+            "avg_completion_tokens": 600
+          }
+        ]
+      }
+    },
+    "throughput": {
+      "summary": {
+        "benchmark": "Throughput",
+        "optimal_concurrency": 4,
+        "max_requests_per_second": 1.6468365635925355,
+        "max_tokens_per_second": 212.44191670343707
+      },
+      "results": [
+        {
+          "concurrency": 1,
+          "requests_sent": 5,
+          "successful_requests": 5,
+          "elapsed_seconds": 8.053967714309692,
+          "requests_per_second": 0.6208120242543772,
+          "tokens_per_second": 81.20221277247255
+        },
+        {
+          "concurrency": 2,
+          "requests_sent": 5,
+          "successful_requests": 5,
+          "elapsed_seconds": 4.945874214172363,
+          "requests_per_second": 1.0109436236110776,
+          "tokens_per_second": 136.47738918749548
+        },
+        {
+          "concurrency": 4,
+          "requests_sent": 5,
+          "successful_requests": 5,
+          "elapsed_seconds": 3.0361239910125732,
+          "requests_per_second": 1.6468365635925355,
+          "tokens_per_second": 212.44191670343707
+        }
+      ]
+    },
+    "cost": {
+      "summary": {
+        "benchmark": "Cost Estimation",
+        "total_input_tokens": 48,
+        "total_output_tokens": 932,
+        "total_input_cost": 0.000144,
+        "total_output_cost": 0.01398,
+        "total_cost": 0.014124,
+        "cost_per_1k_tokens": 0.014412244897959184
+      },
+      "results": [
+        {
+          "category": "short",
+          "input_tokens": 17,
+          "output_tokens": 12,
+          "input_cost": 5.1e-05,
+          "output_cost": 0.00018,
+          "total_cost": 0.000231,
+          "cost_per_token": 7.965517241379311e-06
+        },
+        {
+          "category": "medium",
+          "input_tokens": 15,
+          "output_tokens": 300,
+          "input_cost": 4.5e-05,
+          "output_cost": 0.0045,
+          "total_cost": 0.0045449999999999996,
+          "cost_per_token": 1.4428571428571427e-05
+        },
+        {
+          "category": "long",
+          "input_tokens": 16,
+          "output_tokens": 620,
+          "input_cost": 4.8e-05,
+          "output_cost": 0.0093,
+          "total_cost": 0.009347999999999999,
+          "cost_per_token": 1.4698113207547168e-05
+        }
+      ]
+    },
+    "reliability": {
+      "summary": {
+        "benchmark": "Reliability",
+        "total_requests": 10,
+        "successes": 10,
+        "failures": 0,
+        "success_rate": 1.0,
+        "avg_latency": 0.11658730506896972,
+        "latency_variance": 3.2324635817025815e-06
+      },
+      "results": [
+        {
+          "request": 1,
+          "success": true,
+          "latency": 0.12142729759216309
+        },
+        {
+          "request": 2,
+          "success": true,
+          "latency": 0.1165316104888916
+        },
+        {
+          "request": 3,
+          "success": true,
+          "latency": 0.11507534980773926
+        },
+        {
+          "request": 4,
+          "success": true,
+          "latency": 0.1157379150390625
+        },
+        {
+          "request": 5,
+          "success": true,
+          "latency": 0.11609411239624023
+        },
+        {
+          "request": 6,
+          "success": true,
+          "latency": 0.11607003211975098
+        },
+        {
+          "request": 7,
+          "success": true,
+          "latency": 0.11593508720397949
+        },
+        {
+          "request": 8,
+          "success": true,
+          "latency": 0.11732888221740723
+        },
+        {
+          "request": 9,
+          "success": true,
+          "latency": 0.1159815788269043
+        },
+        {
+          "request": 10,
+          "success": true,
+          "latency": 0.1156911849975586
+        }
+      ]
+    }
+  }
+}

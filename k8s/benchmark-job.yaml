@@ -1,0 +1,73 @@
+# ARBM Benchmark Job
+# Purpose: Run benchmark suite as a Kubernetes Job
+# Author: Deepak Soni
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: arbm-benchmark-run
+  namespace: arbm-benchmark
+spec:
+  ttlSecondsAfterFinished: 86400  # Clean up after 24 hours
+  template:
+    spec:
+      containers:
+      - name: benchmark
+        image: python:3.11-slim
+        command:
+        - /bin/bash
+        - -c
+        - |
+          cd /mnt/arbm-data
+          pip install requests pyyaml numpy matplotlib
+          python3 scripts/run_all_tracks.py \
+            --config configs/benchmark_config.yaml \
+            --track all \
+            --provider vllm \
+            --endpoint http://vllm-service:8000 \
+            --output benchmarks/results
+        env:
+        - name: VLLM_URL
+          value: "http://vllm-service:8000"
+        - name: ANTHROPIC_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: api-keys
+              key: anthropic
+              optional: true
+        - name: OPENAI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: api-keys
+              key: openai
+              optional: true
+        volumeMounts:
+        - name: arbm-data
+          mountPath: /mnt/arbm-data
+        resources:
+          requests:
+            memory: "4Gi"
+            cpu: "2"
+          limits:
+            memory: "8Gi"
+            cpu: "4"
+      volumes:
+      - name: arbm-data
+        persistentVolumeClaim:
+          claimName: arbm-fss-pvc
+      restartPolicy: Never
+  backoffLimit: 2
+---
+# API Keys Secret (optional, for Track 05)
+# Create with: kubectl create secret generic api-keys \
+#   --from-literal=anthropic=YOUR_ANTHROPIC_KEY \
+#   --from-literal=openai=YOUR_OPENAI_KEY \
+#   -n arbm-benchmark
+apiVersion: v1
+kind: Secret
+metadata:
+  name: api-keys
+  namespace: arbm-benchmark
+type: Opaque
+stringData:
+  anthropic: "YOUR_ANTHROPIC_API_KEY"
+  openai: "YOUR_OPENAI_API_KEY"

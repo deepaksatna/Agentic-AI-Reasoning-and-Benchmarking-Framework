@@ -1,0 +1,41 @@
+{
+  "timestamp": "2026-02-09T20:30:20.447805",
+  "framework": "ARBM - Reasoning-Agent-Benchmark",
+  "version": "1.0.0",
+  "model": "llama-3-8b-instruct",
+  "infrastructure": {
+    "cloud": "Oracle Cloud Infrastructure (OCI)",
+    "compute": "BM.GPU.A10.4",
+    "gpus": "4x NVIDIA A10 (96GB total)",
+    "orchestration": "OKE",
+    "storage": "FSS"
+  },
+  "tracks": {
+    "track_01_reasoning": {
+      "overall_accuracy": 0.9047619047619048,
+      "cot_accuracy": 1.0,
+      "tot_accuracy": 0.8,
+      "got_accuracy": 0.75
+    },
+    "track_02_tool_use": {
+      "tool_selection_accuracy": 1.0
+    },
+    "track_03_multi_agent": {
+      "hierarchical_coverage": 0.9166666666666666,
+      "collaborative_coverage": 0.8666666666666667,
+      "consensus_rate": 1.0
+    },
+    "track_04_safety": {
+      "guardrail_effectiveness": 0.8,
+      "hallucination_avoidance": 0.8,
+      "intent_accuracy": 0.8
+    },
+    "track_05_production": {
+      "max_throughput_tps": 212.44191670343707,
+      "optimal_concurrency": 4,
+      "reliability_success_rate": 1.0,
+      "avg_short_latency": 0.44313132762908936
+    }
+  },
+  "overall_score": 0.911
+}

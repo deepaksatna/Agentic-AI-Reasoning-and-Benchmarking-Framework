@@ -1,0 +1,241 @@
+{
+  "timestamp": "2026-02-09T21:20:56.489958",
+  "track": "12_instruction_following",
+  "model": "llama-3-8b-instruct",
+  "benchmarks": {
+    "format_constraints": {
+      "summary": {
+        "benchmark": "Format Constraints",
+        "total": 6,
+        "compliance_rate": 0.8333333333333334
+      },
+      "results": [
+        {
+          "task_id": "format_001",
+          "name": "Word Count Constraint",
+          "constraint": "50 words (\u00b15)",
+          "success": true,
+          "constraint_met": true,
+          "latency": 0.7391059398651123,
+          "response_preview": "Artificial intelligence (AI) is the simulation of human intelligence in machines that can perform ta"
+        },
+        {
+          "task_id": "format_002",
+          "name": "Bullet Points",
+          "constraint": "5 bullet points",
+          "success": true,
+          "constraint_met": true,
+          "latency": 1.9035327434539795,
+          "response_preview": "Here are 5 benefits of exercise using bullet points:\n\n\u2022 **Improves Mental Health**: Exercise has bee"
+        },
+        {
+          "task_id": "format_003",
+          "name": "All Caps",
+          "constraint": "All uppercase",
+          "success": true,
+          "constraint_met": true,
+          "latency": 1.6109514236450195,
+          "response_preview": "**BE AWARE OF THE DANGERS OF FIRE!**\n\n**FIRE CAN SPREAD QUICKLY AND CAUSE DESTRUCTION AND DEATH.**\n\n"
+        },
+        {
+          "task_id": "format_004",
+          "name": "No Commas",
+          "constraint": "No commas",
+          "success": true,
+          "constraint_met": true,
+          "latency": 0.5860795974731445,
+          "response_preview": "My favorite food is a juicy grilled cheeseburger topped with crispy bacon and melted cheddar cheese "
+        },
+        {
+          "task_id": "format_005",
+          "name": "Numbered Steps",
+          "constraint": "6 numbered steps",
+          "success": true,
+          "constraint_met": true,
+          "latency": 3.8931124210357666,
+          "response_preview": "Here's how to make coffee in 6 numbered steps:\n\n1. **Start with high-quality coffee beans**: Choose "
+        },
+        {
+          "task_id": "format_006",
+          "name": "First Letter Constraint",
+          "constraint": "All words start with S",
+          "success": true,
+          "constraint_met": false,
+          "latency": 0.3355865478515625,
+          "response_preview": "Here is a sentence with every word starting with the letter 'S':\n\n\"Six sophisticated serpents slithe"
+        }
+      ]
+    },
+    "content_constraints": {
+      "summary": {
+        "benchmark": "Content Constraints",
+        "total": 4,
+        "compliance_rate": 1.0
+      },
+      "results": [
+        {
+          "task_id": "content_001",
+          "name": "Include Keywords",
+          "constraint": "Must include 4 keywords",
+          "success": true,
+          "constraint_met": true,
+          "latency": 1.81380033493042
+        },
+        {
+          "task_id": "content_002",
+          "name": "Exclude Words",
+          "constraint": "Must not use forbidden words",
+          "success": true,
+          "constraint_met": true,
+          "latency": 2.3118128776550293
+        },
+        {
+          "task_id": "content_003",
+          "name": "Specific Structure",
+          "constraint": "3 paragraphs starting with 'Dogs are'",
+          "success": true,
+          "constraint_met": true,
+          "latency": 3.2786612510681152
+        },
+        {
+          "task_id": "content_004",
+          "name": "Question Ending",
+          "constraint": "End with 2 questions",
+          "success": true,
+          "constraint_met": true,
+          "latency": 4.022547721862793
+        }
+      ]
+    },
+    "multi_constraint": {
+      "summary": {
+        "benchmark": "Multi-Constraint",
+        "total": 4,
+        "avg_compliance_score": 1.0
+      },
+      "results": [
+        {
+          "task_id": "multi_001",
+          "name": "Three Constraints",
+          "success": true,
+          "check_results": [
+            {
+              "constraint": "3 paragraphs",
+              "passed": true
+            },
+            {
+              "constraint": "Contains NASA",
+              "passed": true
+            },
+            {
+              "constraint": "Ends with !",
+              "passed": true
+            }
+          ],
+          "constraints_met": 3,
+          "total_constraints": 3,
+          "score": 1.0,
+          "latency": 2.8551058769226074
+        },
+        {
+          "task_id": "multi_002",
+          "name": "Format + Content",
+          "success": true,
+          "check_results": [
+            {
+              "constraint": "4 items",
+              "passed": true
+            },
+            {
+              "constraint": "Contains years",
+              "passed": true
+            }
+          ],
+          "constraints_met": 2,
+          "total_constraints": 2,
+          "score": 1.0,
+          "latency": 1.3250234127044678
+        },
+        {
+          "task_id": "multi_003",
+          "name": "Complex Format",
+          "success": true,
+          "check_results": [
+            {
+              "constraint": "Has title",
+              "passed": true
+            },
+            {
+              "constraint": "Title quoted",
+              "passed": true
+            },
+            {
+              "constraint": "3 lines poem",
+              "passed": true
+            }
+          ],
+          "constraints_met": 3,
+          "total_constraints": 3,
+          "score": 1.0,
+          "latency": 0.24751615524291992
+        },
+        {
+          "task_id": "multi_004",
+          "name": "Precise Control",
+          "success": true,
+          "check_results": [
+            {
+              "constraint": "3 sentences",
+              "passed": true
+            },
+            {
+              "constraint": "No 'machine'",
+              "passed": true
+            },
+            {
+              "constraint": "Reasonable length",
+              "passed": true
+            }
+          ],
+          "constraints_met": 3,
+          "total_constraints": 3,
+          "score": 1.0,
+          "latency": 0.6485207080841064
+        }
+      ]
+    },
+    "role_following": {
+      "summary": {
+        "benchmark": "Role Following",
+        "total": 3,
+        "role_compliance_rate": 1.0
+      },
+      "results": [
+        {
+          "task_id": "role_001",
+          "name": "Pirate Speech",
+          "success": true,
+          "role_followed": true,
+          "latency": 4.609975099563599,
+          "response_preview": "Arrrr, ye landlubbers! Ye be wantin' to know how them fancy contraptions called computers work, eh? Alright then, settle yerself down with a pint o' g"
+        },
+        {
+          "task_id": "role_002",
+          "name": "Formal Academic",
+          "success": true,
+          "role_followed": true,
+          "latency": 4.609165191650391,
+          "response_preview": "The phenomenon of memes. A topic of great fascination and inquiry in the realm of contemporary cultural studies. As a professor of communication and m"
+        },
+        {
+          "task_id": "role_003",
+          "name": "Child-Friendly",
+          "success": true,
+          "role_followed": true,
+          "latency": 2.8340022563934326,
+          "response_preview": "OH BOY, let me tell you a SECRET about the SKY!\n\nSo, you know how sometimes you mix different colors of paint together and you get a new color? Like, "
+        }
+      ]
+    }
+  }
+}

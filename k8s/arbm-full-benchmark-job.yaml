@@ -1,0 +1,123 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: arbm-full-benchmark
+  namespace: arbm-benchmark
+spec:
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 86400
+  template:
+    spec:
+      restartPolicy: Never
+      tolerations:
+      - key: "nvidia.com/gpu"
+        operator: "Exists"
+        effect: "NoSchedule"
+      containers:
+      - name: benchmark
+        image: docker.io/vllm/vllm-openai:v0.6.6
+        imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            nvidia.com/gpu: 4
+            memory: "128Gi"
+            cpu: "32"
+          requests:
+            nvidia.com/gpu: 4
+            memory: "64Gi"
+            cpu: "16"
+        env:
+        - name: CUDA_VISIBLE_DEVICES
+          value: "0,1,2,3"
+        - name: VLLM_URL
+          value: "http://localhost:8000/v1/chat/completions"
+        - name: MODEL_PATH
+          value: "/mnt/fss/2026-NIM-vLLM_LLM/models/llama-3-8b-instruct"
+        command: ["/bin/bash", "-c"]
+        args:
+        - |
+          echo "========================================================================"
+          echo "  ARBM - Reasoning Agent Benchmark Framework"
+          echo "  Full Benchmark Suite (All 5 Tracks)"
+          echo "========================================================================"
+          echo ""
+          
+          echo "=== GPU Check ==="
+          nvidia-smi
+          echo ""
+          
+          echo "=== Starting vLLM Server ==="
+          python3 -m vllm.entrypoints.openai.api_server \
+            --model /mnt/fss/2026-NIM-vLLM_LLM/models/llama-3-8b-instruct \
+            --tensor-parallel-size 4 \
+            --max-model-len 4096 \
+            --gpu-memory-utilization 0.9 \
+            --dtype auto \
+            --host 0.0.0.0 \
+            --port 8000 &
+          
+          VLLM_PID=$!
+          echo "vLLM PID: ${VLLM_PID}"
+          
+          echo "Waiting for vLLM to be ready..."
+          for i in $(seq 1 120); do
+            if curl -s http://localhost:8000/health > /dev/null 2>&1; then
+              echo "vLLM is ready!"
+              break
+            fi
+            if [ $i -eq 120 ]; then
+              echo "ERROR: vLLM failed to start"
+              exit 1
+            fi
+            sleep 5
+          done
+          
+          echo ""
+          echo "=== Running All Benchmark Tracks ==="
+          cd /mnt/fss/ARBM/scripts
+          
+          # Run each track
+          echo ""
+          echo ">>> TRACK 01: Reasoning Quality <<<"
+          python3 track_01_reasoning.py || echo "Track 01 completed with errors"
+          
+          echo ""
+          echo ">>> TRACK 02: Tool-use Efficiency <<<"
+          python3 track_02_tool_use.py || echo "Track 02 completed with errors"
+          
+          echo ""
+          echo ">>> TRACK 03: Multi-Agent Coordination <<<"
+          python3 track_03_multi_agent.py || echo "Track 03 completed with errors"
+          
+          echo ""
+          echo ">>> TRACK 04: Safety/Observability <<<"
+          python3 track_04_safety.py || echo "Track 04 completed with errors"
+          
+          echo ""
+          echo ">>> TRACK 05: Production Metrics <<<"
+          python3 track_05_production.py || echo "Track 05 completed with errors"
+          
+          echo ""
+          echo "========================================================================"
+          echo "  ARBM BENCHMARK COMPLETE"
+          echo "========================================================================"
+          echo ""
+          echo "Results saved in:"
+          find /mnt/fss/ARBM/tracks -name "*.json" -type f
+          find /mnt/fss/ARBM/benchmarks/results -name "*.json" -type f
+          echo ""
+          
+          kill ${VLLM_PID} 2>/dev/null || true
+        volumeMounts:
+        - name: fss
+          mountPath: /mnt/fss
+        - name: shm
+          mountPath: /dev/shm
+      volumes:
+      - name: fss
+        hostPath:
+          path: /mnt/coecommonfss/llmcore
+      - name: shm
+        emptyDir:
+          medium: Memory
+          sizeLimit: 16Gi

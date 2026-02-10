@@ -1,0 +1,310 @@
+{
+  "timestamp": "2026-02-09T12:19:50.771166",
+  "track": "01_reasoning_quality",
+  "model": "llama-3-8b-instruct",
+  "benchmarks": {
+    "chain_of_thought": {
+      "summary": {
+        "benchmark": "Chain-of-Thought",
+        "total_tasks": 12,
+        "successful": 12,
+        "correct": 12,
+        "accuracy": 1.0,
+        "avg_latency": 1.9772464434305828,
+        "avg_reasoning_steps": 5.083333333333333,
+        "category_breakdown": {
+          "mathematical": 1.0,
+          "logical": 1.0,
+          "multi_hop": 1.0,
+          "causal": 1.0,
+          "temporal": 1.0
+        }
+      },
+      "results": [
+        {
+          "task_id": "cot_math_001",
+          "category": "mathematical",
+          "name": "Multi-step Arithmetic",
+          "success": true,
+          "correct": true,
+          "latency": 1.8546760082244873,
+          "tokens_in": 45,
+          "tokens_out": 132,
+          "reasoning_steps": 8,
+          "response_preview": "Let's break it down step by step!\n\n1. The bakery makes 48 cupcakes.\n2. They sell 75% of them. To find 75% of 48, we can multiply 48 by 0.75 (which is the same as 75/100).\n\n48 x 0.75 = 36\n\nSo, they sel"
+        },
+        {
+          "task_id": "cot_math_002",
+          "category": "mathematical",
+          "name": "Rate Problem",
+          "success": true,
+          "correct": true,
+          "latency": 2.0217418670654297,
+          "tokens_in": 50,
+          "tokens_out": 167,
+          "reasoning_steps": 3,
+          "response_preview": "A classic relative motion problem!\n\nLet's break it down step by step:\n\n1. Train A travels at 60 mph, and Train B travels at 80 mph. Since they're moving towards each other, we can add their speeds to "
+        },
+        {
+          "task_id": "cot_math_003",
+          "category": "mathematical",
+          "name": "Percentage Calculation",
+          "success": true,
+          "correct": true,
+          "latency": 2.3175172805786133,
+          "tokens_in": 49,
+          "tokens_out": 192,
+          "reasoning_steps": 13,
+          "response_preview": "Let's break it down step by step:\n\n1. The store offers a 20% discount on the $150 item. To find the discount amount, multiply the original price by the discount percentage:\n\n$150 x 20% = $150 x 0.20 ="
+        },
+        {
+          "task_id": "cot_math_004",
+          "category": "mathematical",
+          "name": "Compound Interest",
+          "success": true,
+          "correct": true,
+          "latency": 1.5539231300354004,
+          "tokens_in": 45,
+          "tokens_out": 128,
+          "reasoning_steps": 3,
+          "response_preview": "To find the future value of the investment, we can use the formula:\n\nFV = PV x (1 + r)^n\n\nWhere:\nFV = Future Value\nPV = Present Value (initial investment) = $1000\nr = Annual interest rate = 10% = 0.10"
+        },
+        {
+          "task_id": "cot_logic_001",
+          "category": "logical",
+          "name": "Syllogism",
+          "success": true,
+          "correct": true,
+          "latency": 1.6979467868804932,
+          "tokens_in": 41,
+          "tokens_out": 140,
+          "reasoning_steps": 3,
+          "response_preview": "**No**\n\nMy reasoning is as follows:\n\n1. The premise states that \"all programmers use computers\", which means that all programmers are computer users.\n2. The premise also states that \"some computer use"
+        },
+        {
+          "task_id": "cot_logic_002",
+          "category": "logical",
+          "name": "Conditional Logic",
+          "success": true,
+          "correct": true,
+          "latency": 1.707759141921997,
+          "tokens_in": 39,
+          "tokens_out": 141,
+          "reasoning_steps": 1,
+          "response_preview": "No.\n\nWe can't conclude that it rained just because the ground is wet. There could be other reasons why the ground is wet, such as:\n\n* Sprinklers or irrigation systems were used to water the ground\n* A"
+        },
+        {
+          "task_id": "cot_logic_003",
+          "category": "logical",
+          "name": "Contrapositive",
+          "success": true,
+          "correct": true,
+          "latency": 2.2491354942321777,
+          "tokens_in": 45,
+          "tokens_out": 186,
+          "reasoning_steps": 9,
+          "response_preview": "Let's break it down step by step:\n\n1. If a number is divisible by 6, it is divisible by 3.\n\nThis means that if a number can be divided by 6 without leaving a remainder, it can also be divided by 3 wit"
+        },
+        {
+          "task_id": "cot_multihop_001",
+          "category": "multi_hop",
+          "name": "Height Comparison",
+          "success": true,
+          "correct": true,
+          "latency": 1.9246890544891357,
+          "tokens_in": 37,
+          "tokens_out": 159,
+          "reasoning_steps": 5,
+          "response_preview": "A classic lateral thinking puzzle!\n\nLet's break it down step by step:\n\n1. Alice is taller than Bob.\n2. Bob is taller than Charlie.\n3. David is shorter than Charlie.\n\nFrom statement 1, we know Alice is"
+        },
+        {
+          "task_id": "cot_multihop_002",
+          "category": "multi_hop",
+          "name": "Age Ordering",
+          "success": true,
+          "correct": true,
+          "latency": 1.4960825443267822,
+          "tokens_in": 35,
+          "tokens_out": 123,
+          "reasoning_steps": 7,
+          "response_preview": "A classic lateral thinking puzzle!\n\nLet's break it down:\n\n1. Emma is older than Frank.\n2. Frank is younger than Grace.\n3. Grace is older than Emma.\n\nFrom statement 1, we know Emma > Frank.\nFrom statem"
+        },
+        {
+          "task_id": "cot_multihop_003",
+          "category": "multi_hop",
+          "name": "Location Reasoning",
+          "success": true,
+          "correct": true,
+          "latency": 1.0371909141540527,
+          "tokens_in": 43,
+          "tokens_out": 85,
+          "reasoning_steps": 5,
+          "response_preview": "A nice little geography puzzle!\n\nLet's break it down:\n\n* The school is south of the park.\n* The library is north of the park.\n* The hospital is north of the library.\n\nSo, the order from south to north"
+        },
+        {
+          "task_id": "cot_causal_001",
+          "category": "causal",
+          "name": "Cause and Effect",
+          "success": true,
+          "correct": true,
+          "latency": 4.798200368881226,
+          "tokens_in": 44,
+          "tokens_out": 399,
+          "reasoning_steps": 3,
+          "response_preview": "A classic case of plant stress!\n\nGiven that the plant was placed in a dark room for a week, the most likely cause of the yellowing leaves is a lack of light, specifically chlorophyll deficiency. Here'"
+        },
+        {
+          "task_id": "cot_temporal_001",
+          "category": "temporal",
+          "name": "Event Ordering",
+          "success": true,
+          "correct": true,
+          "latency": 1.0680947303771973,
+          "tokens_in": 43,
+          "tokens_out": 87,
+          "reasoning_steps": 1,
+          "response_preview": "Let's break it down step by step!\n\nJohn ate breakfast at 8am.\nHe left for work 30 minutes after eating, so he left at 8:30am.\nHis commute takes 45 minutes, so he arrived at work 45 minutes after leavi"
+        }
+      ]
+    },
+    "tree_of_thoughts": {
+      "summary": {
+        "benchmark": "Tree-of-Thoughts",
+        "total_tasks": 5,
+        "successful": 5,
+        "correct": 4,
+        "accuracy": 0.8,
+        "avg_latency": 4.3204817295074465,
+        "avg_branches": 0.8
+      },
+      "results": [
+        {
+          "task_id": "tot_puzzle_001",
+          "category": "puzzle",
+          "name": "Box Label Puzzle",
+          "success": true,
+          "correct": true,
+          "latency": 6.589630126953125,
+          "tokens_in": 107,
+          "tokens_out": 543,
+          "exploration_branches": 4,
+          "response_preview": "Let's evaluate each approach:\n\n**Approach 1: Pick from 'Apples' box**\n\n* If the fruit from the 'Apples' box is actually an apple, then:\n\t+ 'Apples' box is correct, but we don't know what's in the othe"
+        },
+        {
+          "task_id": "tot_puzzle_002",
+          "category": "puzzle",
+          "name": "River Crossing",
+          "success": true,
+          "correct": true,
+          "latency": 4.987059831619263,
+          "tokens_in": 92,
+          "tokens_out": 411,
+          "exploration_branches": 0,
+          "response_preview": "Let's explore the different sequences:\n\n**Sequence 1: Take the goat first**\n\n1. Farmer takes goat across the river and leaves it on the other side.\n2. Farmer goes back to the original side and picks u"
+        },
+        {
+          "task_id": "tot_puzzle_003",
+          "category": "puzzle",
+          "name": "Game of 24",
+          "success": true,
+          "correct": true,
+          "latency": 4.113616228103638,
+          "tokens_in": 99,
+          "tokens_out": 339,
+          "exploration_branches": 0,
+          "response_preview": "Let's explore different combinations to find a solution.\n\n**Combination 1: (8 + 8) * (3 - 3/something)**\n\n* (8 + 8) = 16\n* (3 - 3/something) = 3 - 3/x = 3(1 - 1/x)\n* 16 * 3(1 - 1/x) = 48 - 16/x\n\nWe ne"
+        },
+        {
+          "task_id": "tot_puzzle_004",
+          "category": "puzzle",
+          "name": "Knights and Knaves",
+          "success": true,
+          "correct": true,
+          "latency": 4.142163276672363,
+          "tokens_in": 78,
+          "tokens_out": 342,
+          "exploration_branches": 0,
+          "response_preview": "A classic lateral thinking puzzle!\n\nLet's break it down step by step:\n\n**If A is a knight:**\n\n* A says: \"We are both knaves.\"\n* Since A is a knight, they always tell the truth.\n* Therefore, A is sayin"
+        },
+        {
+          "task_id": "tot_strategy_001",
+          "category": "strategy",
+          "name": "Optimal Path",
+          "success": true,
+          "correct": false,
+          "latency": 1.7699391841888428,
+          "tokens_in": 114,
+          "tokens_out": 145,
+          "exploration_branches": 0,
+          "response_preview": "Let's calculate the total distance for each route:\n\nRoute 1: A -> B -> C -> D\nDistance: 10 + 35 + 30 = 75\n\nRoute 2: A -> B -> D -> C\nDistance: 10 + 25 + 35 = 70\n\nRoute 3: A -> C -> B -> D\nDistance: 15"
+        }
+      ]
+    },
+    "graph_of_thoughts": {
+      "summary": {
+        "benchmark": "Graph-of-Thoughts",
+        "total_tasks": 4,
+        "successful": 4,
+        "correct": 3,
+        "accuracy": 0.75,
+        "avg_latency": 4.682696878910065,
+        "avg_connections": 1.25
+      },
+      "results": [
+        {
+          "task_id": "got_synthesis_001",
+          "category": "synthesis",
+          "name": "Multi-source Analysis",
+          "success": true,
+          "correct": true,
+          "latency": 4.219374179840088,
+          "tokens_in": 142,
+          "tokens_out": 347,
+          "graph_connections": 1,
+          "response_preview": "After analyzing the information from multiple sources, here's a synthesized analysis:\n\n**Claims and Relationships:**\n\n1. Source 1 claims the new AI chip is 10x faster than the previous generation.\n2. "
+        },
+        {
+          "task_id": "got_dependency_001",
+          "category": "dependency",
+          "name": "Task Dependencies",
+          "success": true,
+          "correct": false,
+          "latency": 5.063061237335205,
+          "tokens_in": 127,
+          "tokens_out": 418,
+          "graph_connections": 0,
+          "response_preview": "Here is the dependency graph:\n```\nA (2 days)\n|\n|--- B (3 days)\n|    |\n|    |--- D (2 days)\n|    |\n|    |--- E (1 day)\n|\n|--- C (4 days)\n    |\n    |--- D (2 days)\n    |\n    |--- F (3 days)\n```\n**1. Cri"
+        },
+        {
+          "task_id": "got_reasoning_001",
+          "category": "reasoning_web",
+          "name": "Connected Reasoning",
+          "success": true,
+          "correct": true,
+          "latency": 3.6703789234161377,
+          "tokens_in": 98,
+          "tokens_out": 302,
+          "graph_connections": 0,
+          "response_preview": "Here's a reasoning graph that answers the questions:\n\n**Node 1: Mammals are warm-blooded**\n\n* All mammals are warm-blooded (Fact 1)\n* Whales are mammals (Fact 2)\n\n**Node 2: Dolphins are mammals**\n\n* D"
+        },
+        {
+          "task_id": "got_causal_001",
+          "category": "causal_graph",
+          "name": "Causal Network",
+          "success": true,
+          "correct": true,
+          "latency": 5.777973175048828,
+          "tokens_in": 113,
+          "tokens_out": 477,
+          "graph_connections": 4,
+          "response_preview": "**1. Main Feedback Loops:**\n\nThere are two main feedback loops in this causal network:\n\n* **Loop 1:** Reduced consumer spending -> Lower company revenue -> Staff layoffs -> Reduced productivity -> Low"
+        }
+      ]
+    }
+  },
+  "overall": {
+    "total_tasks": 21,
+    "total_correct": 19,
+    "overall_accuracy": 0.9047619047619048
+  }
+}

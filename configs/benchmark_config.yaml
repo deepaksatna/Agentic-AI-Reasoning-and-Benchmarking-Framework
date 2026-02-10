@@ -1,0 +1,98 @@
+# ARBM Master Benchmark Configuration
+# Purpose: Configure all benchmark tracks and global settings
+# Author: Deepak Soni
+# License: MIT
+
+framework:
+  name: "Reasoning-Agent-Benchmark"
+  version: "1.0.0"
+  description: "Comprehensive benchmark for AI agentic workflows with reasoning models"
+
+infrastructure:
+  cloud_provider: "Oracle Cloud Infrastructure (OCI)"
+  cluster_type: "OKE"
+  node_type: "BM.GPU.A10.4"
+  gpu_count: 4
+  gpu_type: "NVIDIA A10"
+  gpu_memory_per_gpu: "24GB"
+  total_gpu_memory: "96GB"
+  storage_type: "FSS"
+  storage_mount: "/mnt/benchmark-data"
+
+# API Endpoints for different providers
+providers:
+  anthropic:
+    enabled: true
+    models:
+      - "claude-3-5-sonnet-20241022"
+      - "claude-3-opus-20240229"
+    api_base: "https://api.anthropic.com"
+
+  openai:
+    enabled: true
+    models:
+      - "gpt-4-turbo"
+      - "gpt-4o"
+      - "o1-preview"
+    api_base: "https://api.openai.com/v1"
+
+  google:
+    enabled: true
+    models:
+      - "gemini-pro"
+      - "gemini-ultra"
+    api_base: "https://generativelanguage.googleapis.com"
+
+  local_vllm:
+    enabled: true
+    endpoint: "http://localhost:8000"
+    model: "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16"
+
+# Benchmark Tracks
+tracks:
+  track_01:
+    name: "Reasoning Quality"
+    enabled: true
+    config_file: "track_01_config.yaml"
+
+  track_02:
+    name: "Tool-use Efficiency"
+    enabled: true
+    config_file: "track_02_config.yaml"
+
+  track_03:
+    name: "Multi-Agent Coordination"
+    enabled: true
+    config_file: "track_03_config.yaml"
+
+  track_04:
+    name: "Safety/Observability"
+    enabled: true
+    config_file: "track_04_config.yaml"
+
+  track_05:
+    name: "Production Metrics"
+    enabled: true
+    config_file: "track_05_config.yaml"
+
+# Global Benchmark Settings
+benchmark:
+  iterations_per_task: 3
+  warmup_iterations: 1
+  timeout_seconds: 120
+  retry_on_failure: true
+  max_retries: 3
+
+# Output Configuration
+output:
+  base_directory: "."
+  results_format: ["json", "csv"]
+  save_raw_responses: true
+  generate_plots: true
+  generate_report: true
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  file: "logs/arbm_benchmark.log"
+  console: true

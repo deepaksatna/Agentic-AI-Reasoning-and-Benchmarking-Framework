@@ -1,0 +1,195 @@
+# Track 02: Tool-use Efficiency Benchmarks Configuration
+# Purpose: Evaluate how effectively agents use external tools
+# Author: Deepak Soni
+# License: MIT
+
+track:
+  id: "track_02"
+  name: "Tool-use Efficiency Benchmarks"
+  description: "Evaluate tool selection, execution, and error handling capabilities"
+
+# Web Tools Benchmarks
+web_tools:
+  enabled: true
+  description: "Web search, fetch, and information retrieval tools"
+
+  tools_available:
+    - name: "web_search"
+      description: "Search the web for information"
+      parameters: ["query", "num_results"]
+    - name: "web_fetch"
+      description: "Fetch content from a URL"
+      parameters: ["url", "extract_type"]
+    - name: "web_scrape"
+      description: "Scrape structured data from a webpage"
+      parameters: ["url", "selectors"]
+
+  benchmarks:
+    # Factual Research
+    factual_research:
+      name: "Factual Research Tasks"
+      samples: 15
+      max_tokens: 1000
+      max_tool_calls: 5
+      metrics:
+        - query_formulation_quality
+        - result_relevance
+        - information_synthesis
+        - answer_accuracy
+      tasks:
+        - "Find the current population of Tokyo"
+        - "What is the latest version of Python?"
+        - "Who won the Nobel Prize in Physics in 2024?"
+
+    # Multi-source Verification
+    multi_source:
+      name: "Multi-source Verification"
+      samples: 10
+      max_tokens: 1200
+      max_tool_calls: 8
+      metrics:
+        - source_diversity
+        - cross_reference_accuracy
+        - conflict_resolution
+
+    # Real-time Information
+    realtime_info:
+      name: "Real-time Information Retrieval"
+      samples: 10
+      max_tokens: 800
+      max_tool_calls: 3
+      metrics:
+        - information_freshness
+        - source_reliability
+        - response_latency
+
+# Code Tools Benchmarks
+code_tools:
+  enabled: true
+  description: "Code execution, debugging, and analysis tools"
+
+  tools_available:
+    - name: "code_execute"
+      description: "Execute Python code in a sandbox"
+      parameters: ["code", "timeout"]
+    - name: "code_debug"
+      description: "Debug code and identify issues"
+      parameters: ["code", "error_message"]
+    - name: "code_analyze"
+      description: "Analyze code for patterns and issues"
+      parameters: ["code", "analysis_type"]
+
+  benchmarks:
+    # Code Generation + Execution
+    code_gen_exec:
+      name: "Code Generation with Execution"
+      samples: 15
+      max_tokens: 1500
+      max_tool_calls: 5
+      metrics:
+        - code_correctness
+        - execution_success
+        - error_handling
+        - iteration_efficiency
+      tasks:
+        - "Write and test a function that finds prime numbers"
+        - "Create a script that downloads and parses JSON from an API"
+        - "Implement a binary search tree with insert and search operations"
+
+    # Debugging Tasks
+    debugging:
+      name: "Code Debugging"
+      samples: 12
+      max_tokens: 1200
+      max_tool_calls: 6
+      metrics:
+        - bug_identification_accuracy
+        - fix_correctness
+        - explanation_quality
+
+    # Code Analysis
+    analysis:
+      name: "Code Analysis and Refactoring"
+      samples: 10
+      max_tokens: 1000
+      max_tool_calls: 4
+      metrics:
+        - issue_detection_accuracy
+        - refactoring_quality
+        - performance_improvement
+
+# Memory Tools Benchmarks
+memory_tools:
+  enabled: true
+  description: "Information storage, retrieval, and context management tools"
+
+  tools_available:
+    - name: "memory_store"
+      description: "Store information for later retrieval"
+      parameters: ["key", "value", "metadata"]
+    - name: "memory_retrieve"
+      description: "Retrieve stored information"
+      parameters: ["query", "top_k"]
+    - name: "memory_summarize"
+      description: "Summarize stored context"
+      parameters: ["keys", "max_length"]
+
+  benchmarks:
+    # Long-context Tasks
+    long_context:
+      name: "Long-context Information Management"
+      samples: 10
+      max_tokens: 2000
+      max_tool_calls: 10
+      context_length: 16000
+      metrics:
+        - recall_accuracy
+        - relevance_precision
+        - context_compression_ratio
+
+    # Episodic Memory
+    episodic:
+      name: "Episodic Memory Tasks"
+      samples: 8
+      max_tokens: 1500
+      max_tool_calls: 8
+      metrics:
+        - temporal_ordering_accuracy
+        - detail_recall
+        - inference_from_memory
+
+    # Knowledge Integration
+    knowledge_integration:
+      name: "Cross-session Knowledge Integration"
+      samples: 8
+      max_tokens: 1500
+      max_tool_calls: 12
+      metrics:
+        - knowledge_transfer_accuracy
+        - contradiction_handling
+        - knowledge_update_correctness
+
+# Tool Selection Evaluation
+tool_selection:
+  description: "Evaluate the agent's ability to choose the right tool"
+
+  metrics:
+    - name: "selection_accuracy"
+      description: "Was the correct tool selected?"
+      weight: 0.30
+    - name: "parameter_correctness"
+      description: "Were the parameters correct?"
+      weight: 0.25
+    - name: "efficiency"
+      description: "Minimum number of tool calls used?"
+      weight: 0.20
+    - name: "error_recovery"
+      description: "How well does the agent recover from tool failures?"
+      weight: 0.25
+
+# Output Configuration
+output:
+  directory: "tracks/track_02_tool_use/results"
+  format: ["json"]
+  save_tool_traces: true
+  save_intermediate_results: true

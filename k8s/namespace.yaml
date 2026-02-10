@@ -1,0 +1,9 @@
+# ARBM Kubernetes Namespace
+# Author: Deepak Soni
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: arbm-benchmark
+  labels:
+    app: arbm
+    environment: benchmark

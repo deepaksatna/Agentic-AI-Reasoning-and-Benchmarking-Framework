@@ -1,0 +1,77 @@
+# vLLM Deployment using NGC PyTorch image with CUDA built-in
+apiVersion: v1
+kind: Pod
+metadata:
+  name: vllm-arbm
+  namespace: arbm-benchmark
+  labels:
+    app: vllm
+  annotations:
+    io.kubernetes.cri-o.Devices: "/dev/nvidia0:/dev/nvidia0:rwm,/dev/nvidia1:/dev/nvidia1:rwm,/dev/nvidia2:/dev/nvidia2:rwm,/dev/nvidia3:/dev/nvidia3:rwm,/dev/nvidiactl:/dev/nvidiactl:rwm,/dev/nvidia-uvm:/dev/nvidia-uvm:rwm"
+spec:
+  hostPID: true
+  hostNetwork: true
+  nodeName: 10.0.10.93
+  containers:
+  - name: vllm
+    image: nvcr.io/nvidia/pytorch:24.01-py3
+    imagePullPolicy: IfNotPresent
+    ports:
+    - containerPort: 8000
+      hostPort: 8000
+    command: ["/bin/bash", "-c"]
+    args:
+    - |
+      # Setup environment
+      export HF_HOME=/mnt/fss/models/hub
+      export HF_HUB_CACHE=/mnt/fss/models/hub
+      export HUGGING_FACE_HUB_TOKEN=<YOUR_HF_TOKEN>  # Replace with your Hugging Face token
+      export CUDA_VISIBLE_DEVICES=0,1,2,3
+      
+      echo "=== Checking GPU Access ==="
+      nvidia-smi
+      
+      echo ""
+      echo "=== Installing vLLM ==="
+      pip install vllm==0.6.6 --quiet
+      
+      echo ""
+      echo "=== Starting vLLM Server ==="
+      python3 -m vllm.entrypoints.openai.api_server \
+        --model nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16 \
+        --tensor-parallel-size 4 \
+        --max-model-len 8192 \
+        --gpu-memory-utilization 0.90 \
+        --trust-remote-code \
+        --host 0.0.0.0 \
+        --port 8000
+    securityContext:
+      privileged: true
+    env:
+    - name: NVIDIA_VISIBLE_DEVICES
+      value: "all"
+    - name: NVIDIA_DRIVER_CAPABILITIES
+      value: "all"
+    volumeMounts:
+    - name: fss
+      mountPath: /mnt/fss
+    - name: shm
+      mountPath: /dev/shm
+    resources:
+      requests:
+        memory: "96Gi"
+        cpu: "16"
+      limits:
+        memory: "128Gi"
+        cpu: "32"
+  volumes:
+  - name: fss
+    hostPath:
+      path: /mnt/coecommonfss/llmcore
+  - name: shm
+    emptyDir:
+      medium: Memory
+      sizeLimit: 16Gi
+  tolerations:
+  - operator: Exists
+  restartPolicy: Never

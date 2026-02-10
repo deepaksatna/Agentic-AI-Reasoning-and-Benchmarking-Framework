@@ -1,0 +1,144 @@
+# vLLM Deployment for ARBM Benchmarks
+# Purpose: Serve local LLM models for benchmark evaluation
+# Uses pre-cached model from FSS
+# Author: Deepak Soni
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vllm-arbm
+  namespace: arbm-benchmark
+  labels:
+    app: vllm
+    component: inference
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vllm
+  template:
+    metadata:
+      labels:
+        app: vllm
+    spec:
+      containers:
+      - name: vllm
+        image: vllm/vllm-openai:v0.6.6
+        ports:
+        - containerPort: 8000
+          name: http
+        env:
+        - name: HUGGING_FACE_HUB_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: hf-token
+              key: token
+        - name: HF_HOME
+          value: "/mnt/models/hub"
+        - name: HF_HUB_CACHE
+          value: "/mnt/models/hub"
+        - name: HF_HUB_ENABLE_HF_TRANSFER
+          value: "0"
+        command:
+        - python3
+        - -m
+        - vllm.entrypoints.openai.api_server
+        args:
+        - --model
+        - nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16
+        - --tensor-parallel-size
+        - "4"
+        - --max-model-len
+        - "8192"
+        - --gpu-memory-utilization
+        - "0.90"
+        - --trust-remote-code
+        - --host
+        - "0.0.0.0"
+        - --port
+        - "8000"
+        resources:
+          limits:
+            nvidia.com/gpu: 4
+          requests:
+            nvidia.com/gpu: 4
+            memory: "96Gi"
+            cpu: "16"
+        volumeMounts:
+        - name: model-cache
+          mountPath: /mnt/models
+          readOnly: true
+        - name: shm
+          mountPath: /dev/shm
+        - name: arbm-data
+          mountPath: /mnt/arbm-data
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 180
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 180
+          periodSeconds: 30
+      volumes:
+      - name: model-cache
+        hostPath:
+          path: /mnt/coecommonfss/llmcore/models
+          type: Directory
+      - name: shm
+        emptyDir:
+          medium: Memory
+          sizeLimit: 16Gi
+      - name: arbm-data
+        hostPath:
+          path: /mnt/coecommonfss/llmcore/ARBM
+          type: Directory
+      tolerations:
+      - key: "nvidia.com/gpu"
+        operator: "Exists"
+        effect: "NoSchedule"
+      nodeSelector:
+        node.kubernetes.io/instance-type: "BM.GPU.A10.4"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vllm-service
+  namespace: arbm-benchmark
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8000
+    targetPort: 8000
+    protocol: TCP
+    name: http
+  selector:
+    app: vllm
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vllm-external
+  namespace: arbm-benchmark
+  annotations:
+    oci.oraclecloud.com/load-balancer-type: "lb"
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8000
+    targetPort: 8000
+    protocol: TCP
+  selector:
+    app: vllm
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: hf-token
+  namespace: arbm-benchmark
+type: Opaque
+stringData:
+  token: "<YOUR_HF_TOKEN>"  # Replace with your Hugging Face token

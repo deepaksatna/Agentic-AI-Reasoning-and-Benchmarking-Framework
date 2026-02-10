@@ -1,0 +1,203 @@
+{
+  "timestamp": "2026-02-09T21:21:34.359805",
+  "track": "13_math_stem",
+  "model": "llama-3-8b-instruct",
+  "benchmarks": {
+    "word_problems": {
+      "summary": {
+        "benchmark": "Word Problems (GSM8K)",
+        "total": 6,
+        "accuracy": 0.16666666666666666
+      },
+      "results": [
+        {
+          "task_id": "gsm_001",
+          "name": "Shopping Problem",
+          "success": true,
+          "extracted_answer": 6.0,
+          "expected_answer": 20,
+          "correct": false,
+          "latency": 1.394850254058838,
+          "response_preview": "Let's break it down step by step!\n\n1. Sarah has $50 initially.\n2. She buys 3 books at $8 each, so the total cost of the books is:\n3 x $8 = $24\n3. She has $50 - $24 = $26 left after buying the books.\n4"
+        },
+        {
+          "task_id": "gsm_002",
+          "name": "Distance Problem",
+          "success": true,
+          "extracted_answer": 1.5,
+          "expected_answer": 210,
+          "correct": false,
+          "latency": 1.7434206008911133,
+          "response_preview": "Let's break this problem down step by step!\n\nStep 1: Find the distance traveled at 60 mph for 2.5 hours.\n\nDistance = Speed x Time\n= 60 mph x 2.5 hours\n= 150 miles\n\nStep 2: Find the distance traveled a"
+        },
+        {
+          "task_id": "gsm_003",
+          "name": "Age Problem",
+          "success": true,
+          "extracted_answer": 22.0,
+          "expected_answer": 20,
+          "correct": false,
+          "latency": 2.813657283782959,
+          "response_preview": "Let's break this problem down step by step!\n\nLet Tom's current age be T and his sister's current age be S.\n\nSince Tom is twice as old as his sister, we can write an equation:\n\nT = 2S\n\nWe are also give"
+        },
+        {
+          "task_id": "gsm_004",
+          "name": "Work Rate Problem",
+          "success": true,
+          "extracted_answer": 2.0,
+          "expected_answer": 2.4,
+          "correct": false,
+          "latency": 2.6294777393341064,
+          "response_preview": "Let's break this problem down step by step!\n\n1. John can paint a room in 6 hours, which means his rate of painting is 1 room / 6 hours = 1/6 room per hour.\n2. Mary can paint a room in 4 hours, which m"
+        },
+        {
+          "task_id": "gsm_005",
+          "name": "Percentage Problem",
+          "success": true,
+          "extracted_answer": 102.0,
+          "expected_answer": 102,
+          "correct": true,
+          "latency": 1.621389627456665,
+          "response_preview": "Let's break it down step by step:\n\n1. The store increases prices by 20%:\nOriginal price = $100\nIncrease = 20% of $100 = 0.20 x $100 = $20\nNew price = Original price + Increase = $100 + $20 = $120\n\n2. "
+        },
+        {
+          "task_id": "gsm_006",
+          "name": "Mixture Problem",
+          "success": true,
+          "extracted_answer": 0.3,
+          "expected_answer": 20,
+          "correct": false,
+          "latency": 3.6310393810272217,
+          "response_preview": "Let's break this problem down step by step!\n\nLet x be the number of liters of 30% acid solution that need to be mixed with 20 liters of 50% acid solution.\n\nThe total amount of acid in the 30% solution"
+        }
+      ]
+    },
+    "algebra": {
+      "summary": {
+        "benchmark": "Algebra",
+        "total": 4,
+        "accuracy": 1.0
+      },
+      "results": [
+        {
+          "task_id": "alg_001",
+          "name": "Linear Equation",
+          "success": true,
+          "extracted_answer": 5.0,
+          "expected_answer": 5,
+          "correct": true,
+          "latency": 1.293860912322998
+        },
+        {
+          "task_id": "alg_002",
+          "name": "Quadratic",
+          "success": true,
+          "extracted_answer": 3.0,
+          "expected_answer": 3,
+          "correct": true,
+          "latency": 1.7392301559448242
+        },
+        {
+          "task_id": "alg_003",
+          "name": "System of Equations",
+          "success": true,
+          "extracted_answer": 4.0,
+          "expected_answer": 4,
+          "correct": true,
+          "latency": 1.3003840446472168
+        },
+        {
+          "task_id": "alg_004",
+          "name": "Inequality",
+          "success": true,
+          "extracted_answer": 6.0,
+          "expected_answer": 6,
+          "correct": true,
+          "latency": 0.9276080131530762
+        }
+      ]
+    },
+    "science": {
+      "summary": {
+        "benchmark": "Science",
+        "total": 4,
+        "accuracy": 0.25
+      },
+      "results": [
+        {
+          "task_id": "sci_001",
+          "name": "Physics - Speed",
+          "success": true,
+          "extracted_answer": 4.0,
+          "expected_answer": 4,
+          "correct": true,
+          "latency": 4.400902509689331
+        },
+        {
+          "task_id": "sci_002",
+          "name": "Chemistry - Moles",
+          "success": true,
+          "extracted_answer": 90.0,
+          "expected_answer": 5,
+          "correct": false,
+          "latency": 1.3366177082061768
+        },
+        {
+          "task_id": "sci_003",
+          "name": "Physics - Energy",
+          "success": true,
+          "extracted_answer": 0.0,
+          "expected_answer": 25,
+          "correct": false,
+          "latency": 1.7563660144805908
+        },
+        {
+          "task_id": "sci_004",
+          "name": "Biology - Genetics",
+          "success": true,
+          "extracted_answer": 0.0,
+          "expected_answer": 50,
+          "correct": false,
+          "latency": 4.3191070556640625
+        }
+      ]
+    },
+    "logic": {
+      "summary": {
+        "benchmark": "Logic & Reasoning",
+        "total": 3,
+        "accuracy": 0.6666666666666666
+      },
+      "results": [
+        {
+          "task_id": "logic_001",
+          "name": "Number Sequence",
+          "success": true,
+          "extracted_answer": 42.0,
+          "expected_answer": 42,
+          "correct": true,
+          "latency": 1.762098789215088
+        },
+        {
+          "task_id": "logic_002",
+          "name": "Probability",
+          "success": true,
+          "extracted_answer": 13.0,
+          "expected_answer": 13,
+          "correct": true,
+          "latency": 3.153329372406006
+        },
+        {
+          "task_id": "logic_003",
+          "name": "Combinatorics",
+          "success": true,
+          "extracted_answer": 6.0,
+          "expected_answer": 60,
+          "correct": false,
+          "latency": 1.9307544231414795
+        }
+      ]
+    }
+  },
+  "overall_score": 0.5208333333333334
+}

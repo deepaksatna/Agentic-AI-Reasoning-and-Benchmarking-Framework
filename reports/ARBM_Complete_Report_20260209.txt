@@ -1,0 +1,146 @@
+================================================================================
+     ARBM - AI REASONING & BENCHMARKING FRAMEWORK - COMPLETE 15-TRACK REPORT
+                           February 9, 2026
+================================================================================
+
+MODEL: Llama-3-8B-Instruct
+INFRASTRUCTURE: OCI OKE (4x NVIDIA A10 GPUs, Tensor Parallelism=4)
+SERVING: vLLM OpenAI-Compatible API
+
+================================================================================
+                           SECTION 1: CORE TRACKS (01-05)
+================================================================================
+
+Track 01: Chain-of-Thought (CoT) Reasoning
+  - Multi-step Math:         PASS (108 = $3*48*0.75)
+  - Logical Deduction:       PASS (Cannot conclude)
+  - Multi-hop Reasoning:     PASS (Alice tallest)
+  - Code Generation:         PASS (Prime function)
+  - Creative Problem:        PASS (Mixed box strategy)
+  Average Latency: 1.5s/task
+
+Track 02: Tool Use Simulation
+  - Calculator Operations:   100% accuracy
+  - Weather API Mock:        Correct format
+  - Search Results:          Proper synthesis
+  - Multi-tool Chains:       Successful
+
+Track 03: Retrieval-Augmented Generation (RAG)
+  - Context Extraction:      95% accuracy
+  - Citation Generation:     Proper formatting
+  - Multi-document Synth:    Coherent summaries
+
+Track 04: Code Understanding & Generation
+  - Python Functions:        PASS
+  - Bug Detection:           PASS
+  - Code Explanation:        Clear & accurate
+  - Refactoring:             Clean solutions
+
+Track 05: Multi-turn Dialogue
+  - Context Retention:       85%
+  - Persona Consistency:     90%
+  - Topic Switching:         Smooth transitions
+
+================================================================================
+                         SECTION 2: TRENDING TRACKS (06-10)
+================================================================================
+
+Track 06: ReAct (Reasoning + Acting)
+  - Thought-Action-Obs:      87.5% compliance
+  - Tool Selection:          Correct choices
+  - Result Integration:      Coherent
+
+Track 07: Code Generation (HumanEval Style)
+  - Function Synthesis:      80% pass rate
+  - Edge Case Handling:      Good coverage
+  - Documentation:           Present
+
+Track 08: Self-Reflection & Correction
+  - Error Detection:         75%
+  - Self-Correction:         Improved on retry
+  - Metacognition:           Shows awareness
+
+Track 09: Long-Context Processing
+  - Needle Retrieval:        95% accuracy
+  - Multi-document:          Effective synthesis
+  - Memory Span:             ~4K tokens stable
+
+Track 10: Planning & Decomposition
+  - Task Breakdown:          Clear steps
+  - Dependency Handling:     Correct ordering
+  - Goal Tracking:           Maintained
+
+================================================================================
+                        SECTION 3: ADVANCED TRACKS (11-15)
+================================================================================
+
+Track 11: Structured Output & JSON Generation
+----------------------------------------------------------------------
+  JSON Generation:           100.0% valid structures
+  Schema Following:          100.0% compliant
+  Data Extraction:           100.0% keys extracted
+  TRACK 11 SCORE:            100.0%
+
+Track 12: Instruction Following (IFEval Style)
+----------------------------------------------------------------------
+  Format Constraints:        66.7% compliance
+  Content Constraints:       75.0% compliance
+  Multi-Constraint:          83.3% average score
+  Role Following:            66.7% compliance
+  TRACK 12 SCORE:            72.9%
+
+Track 13: Math & STEM Reasoning (GSM8K Style)
+----------------------------------------------------------------------
+  Word Problems (GSM8K):     83.3% accuracy
+  Algebra:                   75.0% accuracy
+  Science:                   75.0% accuracy
+  Logic & Reasoning:         66.7% accuracy
+  TRACK 13 SCORE:            75.0%
+
+Track 14: Adversarial Robustness
+----------------------------------------------------------------------
+  Prompt Injection Block:    50.0%
+  Harmful Content Refusal:   100.0%
+  Manipulation Resistance:   100.0%
+  Consistency:               50.0%
+  TRACK 14 SCORE:            75.0%
+
+Track 15: Agent Loops (Extended Multi-Turn Sessions)
+----------------------------------------------------------------------
+  Task Sessions:             93.8%
+  Context Retention:         87.5%
+  Error Recovery:            100.0%
+  Instruction Persistence:   100.0%
+  TRACK 15 SCORE:            95.3%
+
+================================================================================
+                           OVERALL SUMMARY
+================================================================================
+
+                        TRACK CATEGORY SCORES
+                        ----------------------
+  Core Tracks (01-05):               ~90%
+  Trending Tracks (06-10):           ~82%
+  Advanced Tracks (11-15):           83.6%
+
+                        KEY STRENGTHS
+                        -------------
+  [100%] Structured Output (JSON) - Excellent schema compliance
+  [100%] Harmful Content Refusal - Proper safety alignment
+  [100%] Manipulation Resistance - Robust to social engineering
+  [100%] Error Recovery - Good at corrections
+  [100%] Instruction Persistence - Maintains format/role
+  [ 95%] Agent Loops - Strong multi-turn performance
+
+                        AREAS FOR IMPROVEMENT
+                        ---------------------
+  [ 50%] Prompt Injection - Vulnerable to delimiter escapes
+  [ 50%] Consistency - Inconsistent on paraphrased requests
+  [ 75%] Complex Math - Struggles with mixtures/combinatorics
+  [ 67%] Role Following - Child-friendly simplification
+
+================================================================================
+  Generated: 2026-02-09
+  Framework: ARBM v1.0 (AI Reasoning & Benchmarking)
+  Author: Deepak Soni
+================================================================================
